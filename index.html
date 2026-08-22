@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Blue Dot — Career Companion</title>
+    <meta name="description"
+        content="Blue Dot is your personal career guidance companion — a quiet mentor helping you reflect, plan, and find meaningful direction." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#41474f", "inverse-surface": "#2f3133", "surface-tint": "#375f97",
+                        "secondary-container": "#cfe1f8", "surface-bright": "#f9f9fc", "on-primary-fixed": "#001b3b",
+                        "on-tertiary": "#ffffff", "surface": "#f9f9fc", "on-surface-variant": "#43474f", "on-primary": "#ffffff",
+                        "on-tertiary-container": "#282e35", "on-error-container": "#93000a", "primary": "#375f97",
+                        "primary-container": "#7096d1", "error": "#ba1a1a", "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6", "secondary-fixed": "#d2e4fb", "secondary-fixed-dim": "#b6c8df",
+                        "surface-container-high": "#e8e8ea", "background": "#f9f9fc", "outline-variant": "#c3c6d1",
+                        "secondary": "#4f6073", "on-tertiary-fixed": "#161c23", "surface-container": "#eeeef0",
+                        "surface-dim": "#dadadc", "on-secondary-container": "#536478", "on-secondary": "#ffffff",
+                        "primary-fixed": "#d5e3ff", "inverse-primary": "#a7c8ff", "surface-container-low": "#f3f3f6",
+                        "primary-fixed-dim": "#a7c8ff", "tertiary-fixed-dim": "#c1c7d0", "tertiary-fixed": "#dee3ed",
+                        "on-primary-container": "#002d5b", "on-surface": "#1a1c1e", "on-primary-fixed-variant": "#1b477d",
+                        "tertiary-container": "#90959e", "on-secondary-fixed": "#0a1d2d", "inverse-on-surface": "#f0f0f3",
+                        "surface-container-highest": "#e2e2e5", "outline": "#737781", "on-secondary-fixed-variant": "#37485b",
+                        "surface-variant": "#e2e2e5", "on-background": "#1a1c1e", "tertiary": "#595f67", "on-error": "#ffffff"
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    spacing: { "stack-sm": "12px", "base": "8px", "stack-lg": "48px", "stack-md": "24px", "margin-desktop": "40px", "container-max": "1200px", "margin-mobile": "20px", "gutter": "24px" },
+                    fontFamily: { "body-lg": ["Inter"], "headline-lg": ["Outfit"], "label-sm": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"], "headline-md": ["Outfit"], "display": ["Outfit"], "headline-lg-mobile": ["Outfit"] },
+                    fontSize: {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(89, 95, 103, 0.1);
+            box-shadow: 0 8px 32px rgba(55, 95, 151, 0.05)
+        }
+
+        .soft-elevation-1 {
+            box-shadow: 0 10px 40px -10px rgba(55, 95, 151, 0.08)
+        }
+
+        .soft-elevation-2 {
+            box-shadow: 0 20px 60px -15px rgba(55, 95, 151, 0.12)
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+
+        .screen {
+            display: none;
+            animation: screenIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both
+        }
+
+        .screen.active {
+            display: block
+        }
+
+        @keyframes screenIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .anim-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards
+        }
+
+        .anim-fade-in {
+            animation: fadeIn 1s ease-out forwards
+        }
+
+        .delay-200 {
+            animation-delay: 200ms
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 4px 12px rgba(55, 95, 151, 0.18);
+            border: 2px solid #375f97;
+            transition: transform 0.1s ease
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15)
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #cfe1f8;
+            border-radius: 4px
+        }
+
+        .expand-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-out
+        }
+
+        .expand-content.is-open {
+            grid-template-rows: 1fr
+        }
+
+        .expand-content>div {
+            overflow: hidden
+        }
+
+        .timeline-line {
+            background: linear-gradient(to bottom, #7096d1, #d5e3ff);
+            width: 2px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 24px;
+            bottom: 24px;
+            z-index: 0
+        }
+
+        .timeline-node {
+            position: relative;
+            z-index: 10
+        }
+
+        .node-pulse {
+            animation: pulse-soft 3s infinite ease-in-out
+        }
+
+        @keyframes pulse-soft {
+            0% {
+                box-shadow: 0 0 0 0 rgba(112, 150, 209, 0.4)
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(112, 150, 209, 0)
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(112, 150, 209, 0)
+            }
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none
+        }
+
+        .nav-active {
+            background: #cfe1f8;
+            color: #536478;
+            border-radius: 9999px;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem
+        }
+
+        .blob-1 {
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 50%;
+            height: 50%;
+            background: rgba(167, 200, 255, 0.18);
+            border-radius: 9999px;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: -1
+        }
+
+        .blob-2 {
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 40%;
+            height: 40%;
+            background: rgba(182, 200, 223, 0.18);
+            border-radius: 9999px;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: -1
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col overflow-x-hidden">
+    <!-- TOP APP BAR -->
+    <header id="topbar"
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-md shadow-sm transition-all">
+        <div class="flex items-center gap-2">
+            <button id="btn-back" class="hidden text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant/50 flex items-center" title="Go Back">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <div class="font-display text-headline-md font-semibold text-primary cursor-pointer nav-link"
+                data-screen="onboarding">Blue Dot</div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6" id="desktop-nav">
+            <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
+                data-screen="direction">Direction</a>
+            <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
+                data-screen="plan">Plan</a>
+            <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
+                data-screen="pulse">Pulse</a>
+            <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
+                data-screen="log">Log</a>
+            <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
+                data-screen="journey">Journey</a>
+        </nav>
+        <button id="btn-profile"
+            class="text-primary hover:text-white transition-colors p-2 rounded-full hover:bg-primary flex items-center gap-1"
+            data-screen="auth">
+            <span class="material-symbols-outlined" id="icon-profile">account_circle</span>
+            <span id="text-profile" class="font-label-md hidden md:block"></span>
+        </button>
+    </header>
+    <main class="flex-grow w-full pt-16 pb-24 md:pb-0" id="screens-wrapper">
+        <!-- SCREEN 1: ONBOARDING -->
+        <div class="screen active" id="screen-onboarding">
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="blob-1"></div>
+                <div class="blob-2"></div>
+            </div>
+            <div class="flex flex-col items-center gap-stack-sm px-margin-mobile pt-8 pb-4">
+                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Your
+                    Reflection Space</span>
+                <div class="w-full max-w-[400px] h-1 bg-surface-container-high rounded-full overflow-hidden opacity-50">
+                    <div class="h-full bg-primary rounded-full" style="width:14%"></div>
+                </div>
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Taking the first step...</span>
+            </div>
+            <div
+                class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-md flex flex-col items-center justify-center min-h-[70vh]">
+                <div class="w-full max-w-[600px] flex flex-col gap-stack-md anim-fade-in-up">
+                    <div
+                        class="flex flex-col items-center justify-center gap-stack-sm mb-stack-sm opacity-0 anim-fade-in delay-200">
+                        <div
+                            class="w-28 h-28 rounded-full bg-primary-fixed flex items-center justify-center shadow-[0_8px_40px_rgba(55,95,151,0.15)]">
+                            <span class="material-symbols-outlined filled-icon text-primary"
+                                style="font-size:56px;">trip_origin</span>
+                        </div>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant text-center max-w-[480px]">
+                            Welcome to Blue Dot. I am here to gently guide you toward a path that truly resonates with
+                            who you are.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-stack-sm w-full">
+                        <h2 class="font-display text-headline-md text-on-surface text-center mb-base tracking-tight">
+                            Tell us about your current situation.</h2>
+                        <textarea
+                            class="w-full bg-surface-container-lowest border border-outline-variant rounded-2xl p-stack-md font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant/50 focus:ring-0 focus:border-primary focus:outline-none transition-colors resize-none shadow-[0_8px_30px_rgb(55,95,151,0.04)]"
+                            placeholder="I am currently feeling..." rows="4"></textarea>
+                    </div>
+                    <div class="flex justify-end items-center mt-stack-sm w-full">
+                        <button
+                            class="nav-link bg-primary text-white font-label-md text-label-md rounded-full px-8 py-3 shadow-[0_4px_20px_rgb(55,95,151,0.2)] hover:bg-on-primary-fixed-variant hover:text-white active:scale-95 transition-all flex items-center gap-2 group"
+                            data-screen="direction">
+                            Continue <span
+                                class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </button>
+                    </div>
+                    <div class="flex justify-center mt-base">
+                        <button
+                            class="nav-link font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all"
+                            data-screen="direction">Maybe later</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SCREEN: AUTH (Login / Sign Up) -->
+        <div class="screen" id="screen-auth">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-md flex flex-col items-center justify-center min-h-[70vh]">
+                <div id="auth-forms-container" class="glass-card w-full max-w-[400px] rounded-2xl p-stack-md flex flex-col gap-stack-sm anim-fade-in-up">
+                    <div class="flex border-b border-outline-variant mb-4">
+                        <button id="tab-login" class="flex-1 py-2 font-label-md text-label-md text-primary border-b-2 border-primary transition-colors">Log In</button>
+                        <button id="tab-signup" class="flex-1 py-2 font-label-md text-label-md text-on-surface-variant border-b-2 border-transparent hover:text-primary transition-colors">Sign Up</button>
+                    </div>
+
+                    <!-- Log In Form -->
+                    <form id="form-login" class="flex flex-col gap-4">
+                        <div id="login-error" class="hidden font-label-sm text-error bg-error-container text-on-error-container p-3 rounded-lg"></div>
+                        <div class="flex flex-col gap-2">
+                            <label class="font-label-sm text-label-sm text-on-surface-variant">Email</label>
+                            <input type="email" id="login-email" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="you@example.com" />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="font-label-sm text-label-sm text-on-surface-variant">Password</label>
+                            <input type="password" id="login-password" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="••••••••" />
+                        </div>
+                        <button type="submit" id="btn-login" class="w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md mt-2 flex justify-center items-center gap-2">Log In</button>
+                    </form>
+
+                    <!-- Sign Up Form (hidden by default) -->
+                    <form id="form-signup" class="flex flex-col gap-4 hidden">
+                        <div id="signup-error" class="hidden font-label-sm text-error bg-error-container text-on-error-container p-3 rounded-lg"></div>
+                        <div id="signup-success" class="hidden font-label-sm text-primary bg-primary-container text-on-primary-container p-3 rounded-lg"></div>
+                        <div class="flex flex-col gap-2">
+                            <label class="font-label-sm text-label-sm text-on-surface-variant">Email</label>
+                            <input type="email" id="signup-email" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="you@example.com" />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="font-label-sm text-label-sm text-on-surface-variant">Password</label>
+                            <input type="password" id="signup-password" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="Create a password" />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="font-label-sm text-label-sm text-on-surface-variant">Confirm Password</label>
+                            <input type="password" id="signup-confirm" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="Confirm your password" />
+                        </div>
+                        <button type="submit" id="btn-signup" class="w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md mt-2 flex justify-center items-center gap-2">Sign Up</button>
+                    </form>
+                </div>
+                <div id="auth-logged-in-container" class="hidden glass-card w-full max-w-[400px] rounded-2xl p-stack-md flex flex-col items-center justify-center gap-stack-sm anim-fade-in-up">
+                    <span class="material-symbols-outlined text-primary text-[48px]">check_circle</span>
+                    <h2 class="font-headline-md text-headline-md text-on-surface text-center">You are logged in!</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-center mb-4">Ready to continue your journey.</p>
+                    <button class="nav-link w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md flex justify-center items-center gap-2" data-screen="onboarding">Continue</button>
+                </div>
+            </div>
+        </div>
+        <!-- SCREEN 2: DIRECTION OPTIONS -->
+        <div class="screen" id="screen-direction">
+            <div
+                class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop pt-10 pb-12 flex flex-col gap-stack-lg">
+                <section class="text-center max-w-2xl mx-auto flex flex-col gap-stack-sm">
+                    <h1 class="font-display text-headline-lg md:text-display text-on-surface">Direction Options</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">Review these potential paths based on
+                        your recent reflections. Choose the one that resonates most.</p>
+                </section>
+                <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                    <!-- Card 1: Creative Strategist -->
+                    <article
+                        class="bg-surface-container-lowest rounded-2xl p-stack-md flex flex-col gap-stack-sm soft-elevation-1 border border-primary/10 hover:soft-elevation-2 transition-shadow duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="material-symbols-outlined filled-icon text-primary"
+                                style="font-size:48px;">psychology</span>
+                        </div>
+                        <header class="flex flex-col gap-base relative z-10">
+                            <span
+                                class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full font-label-sm text-label-sm inline-flex items-center gap-1 w-fit"><span
+                                    class="material-symbols-outlined text-[14px]">psychology</span>Inference</span>
+                            <h2 class="font-headline-md text-headline-md text-on-surface">Creative Strategist</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Blends your analytical
+                                background with your emerging interest in design systems.</p>
+                        </header>
+                        <div class="expand-wrapper mt-4">
+                            <button
+                                class="expand-btn w-full flex items-center justify-between py-2 text-on-surface-variant hover:text-on-surface font-label-md text-label-md bg-surface-variant/50 hover:bg-surface-variant rounded-lg px-4 transition-colors">
+                                <span>View Details</span><span
+                                    class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                            </button>
+                            <div class="expand-content mt-2">
+                                <div class="flex flex-col gap-stack-sm px-2 pb-4">
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Advantages</h4>
+                                        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>High
+                                                market demand</li>
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>Leverages
+                                                existing skills</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Considerations</h4>
+                                        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-outline text-[20px] mt-0.5">info</span>Requires
+                                                portfolio building</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Core Skills Needed</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Systems
+                                                Thinking</span>
+                                            <span
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Communication</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-stack-sm relative z-10">
+                            <button
+                                class="nav-link w-full bg-primary text-white py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 hover:text-white transition-all active:scale-95 shadow-md"
+                                data-screen="plan">Choose this path</button>
+                        </div>
+                    </article>
+                    <!-- Card 2: Technical Architect -->
+                    <article
+                        class="bg-surface-container-lowest rounded-2xl p-stack-md flex flex-col gap-stack-sm soft-elevation-1 border border-primary/10 hover:soft-elevation-2 transition-shadow duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="material-symbols-outlined filled-icon text-primary"
+                                style="font-size:48px;">architecture</span>
+                        </div>
+                        <header class="flex flex-col gap-base relative z-10">
+                            <span
+                                class="bg-primary-container text-on-primary-container px-2 py-1 rounded-full font-label-sm text-label-sm inline-flex items-center gap-1 w-fit"><span
+                                    class="material-symbols-outlined text-[14px]">fact_check</span>Fact</span>
+                            <h2 class="font-headline-md text-headline-md text-on-surface">Technical Architect</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant">A direct progression based on
+                                your last three roles and documented successes.</p>
+                        </header>
+                        <div class="expand-wrapper mt-4">
+                            <button
+                                class="expand-btn w-full flex items-center justify-between py-2 text-on-surface-variant hover:text-on-surface font-label-md text-label-md bg-surface-variant/50 hover:bg-surface-variant rounded-lg px-4 transition-colors">
+                                <span>View Details</span><span
+                                    class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                            </button>
+                            <div class="expand-content mt-2">
+                                <div class="flex flex-col gap-stack-sm px-2 pb-4">
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Advantages</h4>
+                                        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>High
+                                                confidence level</li>
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>Clear
+                                                career progression</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Considerations</h4>
+                                        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-outline text-[20px] mt-0.5">info</span>Risk
+                                                of burnout reported previously</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Core Skills Needed</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Architecture
+                                                Design</span>
+                                            <span
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Mentorship</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-stack-sm relative z-10">
+                            <button
+                                class="nav-link w-full bg-primary text-white py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 hover:text-white transition-all active:scale-95 shadow-md"
+                                data-screen="plan">Choose this path</button>
+                        </div>
+                    </article>
+                    <!-- Card 3: Product Innovator -->
+                    <article
+                        class="bg-surface-container-lowest rounded-2xl p-stack-md flex flex-col gap-stack-sm soft-elevation-1 border border-primary/10 hover:soft-elevation-2 transition-shadow duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="material-symbols-outlined filled-icon text-primary"
+                                style="font-size:48px;">auto_awesome</span>
+                        </div>
+                        <header class="flex flex-col gap-base relative z-10">
+                            <span
+                                class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full font-label-sm text-label-sm inline-flex items-center gap-1 w-fit"><span
+                                    class="material-symbols-outlined text-[14px]">psychology</span>Inference</span>
+                            <h2 class="font-headline-md text-headline-md text-on-surface">Product Innovator</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Focuses on finding new
+                                solutions and exploring uncharted territories in your field.</p>
+                        </header>
+                        <div class="expand-wrapper mt-4">
+                            <button
+                                class="expand-btn w-full flex items-center justify-between py-2 text-on-surface-variant hover:text-on-surface font-label-md text-label-md bg-surface-variant/50 hover:bg-surface-variant rounded-lg px-4 transition-colors">
+                                <span>View Details</span><span
+                                    class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                            </button>
+                            <div class="expand-content mt-2">
+                                <div class="flex flex-col gap-stack-sm px-2 pb-4">
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Advantages</h4>
+                                        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>High
+                                                creative fulfillment</li>
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>Flexible
+                                                environment</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Considerations</h4>
+                                        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-outline text-[20px] mt-0.5">info</span>Higher
+                                                ambiguity</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Core Skills Needed</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Prototyping</span>
+                                            <span
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">User
+                                                Research</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-stack-sm relative z-10">
+                            <button
+                                class="nav-link w-full bg-primary text-white py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 hover:text-white transition-all active:scale-95 shadow-md"
+                                data-screen="plan">Choose this path</button>
+                        </div>
+                    </article>
+
+                    <!-- Card 6: UX Engineer -->
+                    <article
+                        class="bg-surface-container-lowest rounded-2xl p-stack-md flex flex-col gap-stack-sm soft-elevation-1 border border-primary/10 hover:soft-elevation-2 transition-shadow duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="material-symbols-outlined filled-icon text-primary"
+                                style="font-size:48px;">design_services</span>
+                        </div>
+                        <header class="flex flex-col gap-base relative z-10">
+                            <span
+                                class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full font-label-sm text-label-sm inline-flex items-center gap-1 w-fit"><span
+                                    class="material-symbols-outlined text-[14px]">psychology</span>Inference</span>
+                            <h2 class="font-headline-md text-headline-md text-on-surface">UX Engineer</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Focuses on bridging design and development to create seamless user experiences.</p>
+                        </header>
+                        <div class="expand-wrapper mt-4">
+                            <button
+                                class="expand-btn w-full flex items-center justify-between py-2 text-on-surface-variant hover:text-on-surface font-label-md text-label-md bg-surface-variant/50 hover:bg-surface-variant rounded-lg px-4 transition-colors">
+                                <span>View Details</span><span
+                                    class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                            </button>
+                            <div class="expand-content mt-2">
+                                <div class="flex flex-col gap-stack-sm px-2 pb-4">
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Advantages</h4>
+                                        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>High
+                                                creative fulfillment</li>
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>Cross-functional</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Considerations</h4>
+                                        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
+                                            <li class="flex items-start gap-2"><span
+                                                    class="material-symbols-outlined text-outline text-[20px] mt-0.5">info</span>Constantly shifting tooling</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+                                            Core Skills Needed</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">CSS & Prototyping</span>
+                                            <span
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">User Research</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-stack-sm relative z-10">
+                            <button
+                                class="nav-link w-full bg-primary text-white py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 hover:text-white transition-all active:scale-95 shadow-md"
+                                data-screen="plan">Choose this path</button>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+        <!-- SCREEN 3: WEEKLY PLAN -->
+        <div class="screen" id="screen-plan">
+            <div
+                class="flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto pt-8 pb-12 min-h-[75vh]">
+                <div class="text-center mb-stack-lg w-full max-w-2xl">
+                    <h1
+                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-stack-sm">
+                        This Week&#39;s Focus</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">Take a small step to build momentum in
+                        your journey.</p>
+                </div>
+                <article
+                    class="glass-card rounded-[32px] p-stack-lg w-full max-w-2xl flex flex-col items-center text-center relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-primary-fixed/20 to-transparent opacity-50 pointer-events-none rounded-[32px]">
+                    </div>
+                    <div class="relative z-10 w-full flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-stack-md">
+                            <span class="material-symbols-outlined filled-icon text-on-primary-fixed"
+                                style="font-size:30px;">local_cafe</span>
+                        </div>
+                        <div class="mb-stack-lg space-y-stack-sm">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider mb-2">Small
+                                Real World Task</span>
+                            <h2 class="font-headline-md text-headline-md text-on-surface">Schedule a 15-minute coffee
+                                chat with a local designer.</h2>
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-[18px]">schedule</span>Est. 30 mins
+                            </p>
+                        </div>
+                        <div class="w-full flex items-center bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-3 shadow-sm mb-stack-md hover:bg-surface-container-low transition-colors focus-within:bg-surface-container-low focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+                            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-3 shrink-0 shadow-sm">
+                                <span class="material-symbols-outlined text-on-primary text-[18px]">trip_origin</span>
+                            </div>
+                            <input type="text" placeholder="Type here or tap to talk..." class="bg-transparent border-none outline-none text-on-surface font-body-md flex-1 text-left placeholder:text-on-surface-variant placeholder:opacity-70 w-full" />
+                            <button class="shrink-0 text-primary hover:text-primary/80 transition-colors flex items-center justify-center cursor-pointer ml-2">
+                                <span class="material-symbols-outlined filled-icon text-[24px]">mic</span>
+                            </button>
+                        </div>
+                        <button id="mark-tried-btn"
+                            class="bg-primary text-on-primary hover:bg-primary/90 rounded-full px-8 py-4 font-label-md text-label-md flex items-center gap-2 transition-all active:scale-95 shadow-md shadow-primary/20">
+                            <span class="material-symbols-outlined">check_circle</span>Mark as tried
+                        </button>
+                        <div id="tried-success"
+                            class="hidden mt-4 text-primary font-label-md text-label-md items-center gap-2">
+                            <span class="material-symbols-outlined filled-icon text-[20px]">check_circle</span>Logged!
+                            Great work.
+                        </div>
+                    </div>
+                </article>
+                <div class="mt-stack-lg">
+                    <button
+                        class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary flex items-center gap-2 transition-colors"
+                        data-screen="pulse">
+                        Take pulse check <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- SCREEN 4: DAILY LOG -->
+        <div class="screen" id="screen-log">
+            <main class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-20 relative">
+                <form id="pulse-form" class="space-y-stack-md max-w-3xl mx-auto relative z-10">
+                <div class="absolute top-4 right-4 md:right-8 w-20 h-20 opacity-30 pointer-events-none z-0">
+                    <div class="w-full h-full rounded-full bg-primary-fixed flex items-center justify-center">
+                        <span class="material-symbols-outlined filled-icon text-primary"
+                            style="font-size:32px;">trip_origin</span>
+                    </div>
+                </div>
+                <section class="mb-stack-lg text-center mt-stack-md relative z-10">
+                    <h1
+                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-stack-sm">
+                        Your Daily Rhythm</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">A gentle record of time.</p>
+                </section>
+                <section class="mb-stack-lg overflow-x-auto pb-4 hide-scrollbar relative z-10">
+                    <div id="daily-rhythm-calendar" class="flex gap-gutter justify-start md:justify-center min-w-max px-2">
+                        <!-- Rendered by JS -->
+                    </div>
+                </section>
+                <section class="max-w-2xl mx-auto space-y-stack-md relative z-10">
+                    <div class="space-y-4" id="log-days-container">
+                        <!-- Monday -->
+                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="1">
+                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                <span>Monday</span>
+                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                            </h3>
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                <span class="font-body-lg text-on-surface font-medium">Review portfolio</span>
+                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tuesday -->
+                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="2">
+                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                <span>Tuesday</span>
+                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                            </h3>
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                <span class="font-body-lg text-on-surface font-medium">Update resume</span>
+                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wednesday -->
+                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="3">
+                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                <span>Wednesday</span>
+                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                            </h3>
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                <span class="font-body-lg text-on-surface font-medium">Read industry article</span>
+                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thursday -->
+                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="4">
+                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                <span>Thursday</span>
+                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                            </h3>
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                <span class="font-body-lg text-on-surface font-medium">Reach out to a connection</span>
+                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Friday -->
+                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="5">
+                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                <span>Friday</span>
+                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                            </h3>
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                <span class="font-body-lg text-on-surface font-medium">Organize notes</span>
+                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday -->
+                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="6">
+                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                <span>Saturday</span>
+                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                            </h3>
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                <span class="font-body-lg text-on-surface font-medium">Reflect on week</span>
+                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
+                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sunday (Special AI Session) -->
+                        <div
+                            class="rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-300 bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container shadow-sm border border-primary/20">
+                            <div class="flex flex-col gap-1 w-full text-center sm:text-left">
+                                <h3 class="font-label-sm text-label-sm uppercase tracking-wider opacity-80 flex items-center justify-center sm:justify-start gap-1">
+                                    <span class="material-symbols-outlined text-[16px]">auto_awesome</span> Sunday Bonus
+                                </h3>
+                                <span class="font-headline-sm text-headline-sm font-medium">30-minute talk session with AI agent</span>
+                            </div>
+                            <button class="shrink-0 bg-primary text-on-primary px-6 py-3 rounded-full font-label-md hover:bg-primary/90 transition-colors shadow-md opacity-50 pointer-events-none" title="Coming soon">
+                                Join Session
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4 pt-4">
+                        <button id="add-intention-btn"
+                            class="w-full py-4 border-2 border-dashed border-outline-variant rounded-2xl text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">add</span>Add gentle intention
+                        </button>
+                        <div id="add-intention-form" class="hidden w-full p-4 border border-outline-variant rounded-2xl flex flex-col gap-3">
+                            <input type="text" id="intention-name" placeholder="Task name..." class="bg-surface-container-low rounded-lg px-3 py-2 outline-none border border-transparent focus:border-primary text-on-surface w-full" />
+                            <textarea id="intention-desc" placeholder="Short description..." class="bg-surface-container-low rounded-lg px-3 py-2 outline-none border border-transparent focus:border-primary text-on-surface resize-none w-full"></textarea>
+                            <div class="flex justify-end gap-2">
+                                <button id="cancel-intention-btn" class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">Cancel</button>
+                                <button id="save-intention-btn" class="px-4 py-2 bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-colors">Save</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button id="daily-submit"
+                                class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:scale-95 transition-transform duration-200 shadow-sm flex items-center gap-2">
+                                Gently Save <span class="material-symbols-outlined filled-icon text-sm">favorite</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- SCREEN 5: JOURNEY / EVOLVING PROFILE -->
+        <div class="screen" id="screen-journey">
+            <div
+                class="flex flex-col items-center w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-12">
+                <section class="w-full max-w-3xl text-center mb-stack-lg">
+                    <h1
+                        class="font-display text-headline-lg md:text-display text-on-surface mb-stack-sm tracking-tight">
+                        Your Evolving Journey</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">A
+                        quiet reflection on the paths you&#39;ve explored. Notice how your focus naturally shifts
+                        towards deeper engagement.</p>
+                </section>
+                <section class="relative w-full max-w-4xl mx-auto mb-stack-lg">
+                    <div class="timeline-line hidden md:block"></div>
+                    <div class="space-y-stack-lg relative">
+                        <!-- Week 1-2 -->
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up" style="animation-delay: 100ms;">
+                            <div class="md:w-1/2 flex justify-end md:pr-stack-md text-center md:text-right">
+                                <div
+                                    class="glass-card rounded-2xl p-stack-md w-full max-w-sm hover:-translate-y-2 hover:shadow-xl hover:border-primary/30 border border-transparent transition-all duration-300 cursor-pointer group relative overflow-hidden">
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">Initial
+                                        Exploration</h3>
+                                    <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">Broad tasks
+                                        to sense direction. Energy was scattered but curious.</p>
+                                    <div class="flex items-center md:justify-end gap-2 text-primary relative z-10">
+                                        <span class="material-symbols-outlined text-[18px] group-hover:scale-125 transition-transform duration-300">explore</span>
+                                        <span class="font-label-md text-label-md">High Discovery</span>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full"><div class="h-full bg-primary/40 group-hover:bg-primary transition-colors" style="width: 25%"></div></div>
+                                </div>
+                            </div>
+                            <div
+                                class="timeline-node flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-lowest border-4 border-surface-container flex items-center justify-center z-10 shadow-sm md:-ml-6 md:-mr-6 my-4 md:my-0">
+                                <div class="w-4 h-4 rounded-full bg-secondary-fixed-dim"></div>
+                            </div>
+                            <div class="md:w-1/2 flex justify-start md:pl-stack-md text-center md:text-left">
+                                <div class="flex flex-col gap-base">
+                                    <span
+                                        class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Week
+                                        1-2</span>
+                                    <div class="flex gap-2 flex-wrap justify-center md:justify-start">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md border border-outline-variant/30">Research</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md border border-outline-variant/30">Planning</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Week 3-4 -->
+                        <div
+                            class="flex flex-col md:flex-row-reverse items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up" style="animation-delay: 400ms;">
+                            <div class="md:w-1/2 flex justify-start md:pl-stack-md text-center md:text-left">
+                                <div
+                                    class="glass-card rounded-2xl p-stack-md w-full max-w-sm hover:-translate-y-2 hover:shadow-xl hover:border-primary/30 border border-transparent transition-all duration-300 cursor-pointer group relative overflow-hidden">
+                                    <div
+                                        class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-bl-full -z-10 group-hover:bg-primary-container/30 transition-colors">
+                                    </div>
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">Finding Flow
+                                    </h3>
+                                    <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">Narrowing
+                                        focus to creative problem solving. Enjoyment metrics spiked.</p>
+                                    <div class="flex items-center gap-2 text-primary relative z-10">
+                                        <span class="material-symbols-outlined text-[18px] group-hover:scale-125 transition-transform duration-300">psychology</span>
+                                        <span class="font-label-md text-label-md">Deep Focus</span>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full"><div class="h-full bg-primary/40 group-hover:bg-primary transition-colors" style="width: 50%"></div></div>
+                                </div>
+                            </div>
+                            <div
+                                class="timeline-node flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-lowest border-4 border-primary-container/30 flex items-center justify-center z-10 shadow-sm md:-ml-6 md:-mr-6 my-4 md:my-0">
+                                <div class="w-4 h-4 rounded-full bg-primary-container"></div>
+                            </div>
+                            <div class="md:w-1/2 flex justify-end md:pr-stack-md text-center md:text-right">
+                                <div class="flex flex-col gap-base items-center md:items-end">
+                                    <span
+                                        class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Week
+                                        3-4</span>
+                                    <div class="flex gap-2 flex-wrap justify-center md:justify-end">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md">Design</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md">Strategy</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Present -->
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up" style="animation-delay: 700ms;">
+                            <div class="md:w-1/2 flex justify-end md:pr-stack-md text-center md:text-right">
+                                <div
+                                    class="glass-card rounded-2xl p-stack-md w-full max-w-sm border-primary/20 shadow-[0_8px_32px_rgba(55,95,151,0.08)] hover:-translate-y-2 hover:shadow-xl hover:border-primary/50 transition-all duration-300 cursor-pointer group relative overflow-hidden">
+                                    <div class="flex justify-center md:justify-end mb-4 relative z-10">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                            <span class="material-symbols-outlined group-hover:rotate-12 transition-transform duration-300">lightbulb</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">Current
+                                        Alignment</h3>
+                                    <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">You&#39;ve
+                                        found a natural cadence in leadership and ideation.</p>
+                                    <div class="mt-4 text-left relative z-10">
+                                        <div class="flex justify-between mb-1">
+                                            <span
+                                                class="font-label-sm text-label-sm text-on-surface-variant">Clarity</span>
+                                            <span class="font-label-sm text-label-sm text-primary group-hover:font-bold transition-all">High</span>
+                                        </div>
+                                        <div
+                                            class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+                                            <div class="h-full bg-primary rounded-full w-[85%]"></div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full"><div class="h-full bg-primary" style="width: 85%"></div></div>
+                                </div>
+                            </div>
+                            <div
+                                class="timeline-node flex-shrink-0 w-16 h-16 rounded-full bg-surface-container-lowest border-4 border-primary/20 flex items-center justify-center z-10 shadow-md md:-ml-8 md:-mr-8 my-4 md:my-0 node-pulse">
+                                <div class="w-6 h-6 rounded-full bg-primary"></div>
+                            </div>
+                            <div class="md:w-1/2 flex justify-start md:pl-stack-md text-center md:text-left">
+                                <div class="flex flex-col gap-base">
+                                    <span
+                                        class="font-label-sm text-label-sm text-primary font-semibold tracking-wider uppercase">Present</span>
+                                    <div class="flex gap-2 flex-wrap justify-center md:justify-start">
+                                        <span
+                                            class="px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm">Leadership</span>
+                                        <span
+                                            class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">Mentorship</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="flex justify-center mt-4">
+                    <button
+                        class="nav-link bg-primary text-white font-label-md text-label-md px-8 py-3 rounded-full shadow-md hover:bg-primary/90 active:scale-95 transition-all flex items-center gap-2"
+                        data-screen="pulse">
+                        Take Weekly Pulse Check <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- SCREEN 6: WEEKLY PULSE CHECK -->
+        <div class="screen" id="screen-pulse">
+            <main class="max-w-3xl mx-auto px-margin-mobile md:px-0 pt-8 pb-16">
+                <div class="mb-stack-lg text-center space-y-stack-sm">
+                    <h1 class="font-display text-headline-lg md:text-display text-on-surface">Weekly Pulse Check</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">Take a deep breath.
+                        Reflect on the past week&#39;s journey to calibrate your direction.</p>
+                </div>
+                <form class="space-y-stack-lg" id="pulse-form">
+                    <section class="glass-card p-stack-md space-y-stack-sm rounded-xl">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined filled-icon text-primary">sentiment_satisfied</span>
+                            <div>
+                                <h2 class="font-headline-md text-headline-md text-on-surface">How much did you enjoy
+                                    your primary focus this week?</h2>
+                                <p class="font-body-md text-body-md text-on-surface-variant mt-1">Consider moments of
+                                    flow versus friction.</p>
+                            </div>
+                        </div>
+                        <div class="pt-8 pb-4 px-2">
+                            <input class="w-full" id="enjoyment-slider" max="100" min="1" type="range" value="70" />
+                            <div class="flex justify-between mt-4 font-label-md text-label-md text-on-surface-variant">
+                                <span>High Friction</span><span>Deep Flow</span>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="glass-card p-stack-md space-y-stack-sm rounded-xl">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined filled-icon text-primary">terrain</span>
+                            <div>
+                                <h2 class="font-headline-md text-headline-md text-on-surface">How challenging was the
+                                    work?</h2>
+                                <p class="font-body-md text-body-md text-on-surface-variant mt-1">Reflect on the
+                                    cognitive load and emotional effort required.</p>
+                            </div>
+                        </div>
+                        <div class="pt-8 pb-4 px-2">
+                            <input class="w-full" id="difficulty-slider" max="100" min="1" type="range" value="40" />
+                            <div class="flex justify-between mt-4 font-label-md text-label-md text-on-surface-variant">
+                                <span>Too Easy</span><span>Overwhelming</span>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="glass-card p-stack-md space-y-stack-sm rounded-xl">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined filled-icon text-primary">flag</span>
+                            <div>
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Journey Progress</h2>
+                                <p class="font-body-md text-body-md text-on-surface-variant mt-1">How far along are you
+                                    toward this week&#39;s intent?</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 mt-6">
+                            <label class="cursor-pointer group"><input class="peer sr-only" name="progress" type="radio"
+                                    value="1" />
+                                <div
+                                    class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors text-center px-1">
+                                    <span class="font-label-sm text-label-sm leading-tight">Just Started</span></div>
+                            </label>
+                            <label class="cursor-pointer group"><input class="peer sr-only" name="progress" type="radio"
+                                    value="2" />
+                                <div
+                                    class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors">
+                                    <span class="font-label-md text-label-md">Q1</span></div>
+                            </label>
+                            <label class="cursor-pointer group"><input checked class="peer sr-only" name="progress"
+                                    type="radio" value="3" />
+                                <div
+                                    class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors">
+                                    <span class="font-label-md text-label-md">Halfway</span></div>
+                            </label>
+                            <label class="cursor-pointer group"><input class="peer sr-only" name="progress" type="radio"
+                                    value="4" />
+                                <div
+                                    class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors">
+                                    <span class="font-label-md text-label-md">Q3</span></div>
+                            </label>
+                            <label class="cursor-pointer group"><input class="peer sr-only" name="progress" type="radio"
+                                    value="5" />
+                                <div
+                                    class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors">
+                                    <span class="font-label-md text-label-md">Arrived</span></div>
+                            </label>
+                        </div>
+                    </section>
+                    <section class="glass-card p-stack-md space-y-stack-sm rounded-xl">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined filled-icon text-primary">lightbulb</span>
+                            <div class="w-full">
+                                <h2 class="font-headline-md text-headline-md text-on-surface">What surprised you?</h2>
+                                <p class="font-body-md text-body-md text-on-surface-variant mt-1 mb-4">A moment of
+                                    unexpected joy, a hidden roadblock, or a new insight.</p>
+                                <textarea
+                                    class="w-full bg-surface border border-outline-variant rounded-xl p-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow resize-none"
+                                    placeholder="I noticed that..." rows="4"></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="glass-card p-stack-md space-y-stack-sm rounded-xl">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined filled-icon text-primary">explore</span>
+                            <div class="w-full">
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Looking ahead</h2>
+                                <p class="font-body-md text-body-md text-on-surface-variant mt-1 mb-6">Based on this
+                                    week, how do you want to proceed next week?</p>
+                                <div class="space-y-3">
+                                    <label
+                                        class="flex items-center p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-secondary-container has-[:checked]:border-primary">
+                                        <input checked
+                                            class="w-5 h-5 text-primary border-outline-variant focus:ring-primary"
+                                            name="next_step" type="radio" value="continue" />
+                                        <div class="ml-4"><span
+                                                class="font-label-md text-label-md text-on-surface block">Continue
+                                                path</span><span
+                                                class="font-body-md text-body-md text-on-surface-variant text-sm">Stay
+                                                the course, momentum is good.</span></div>
+                                    </label>
+                                    <label
+                                        class="flex items-center p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-secondary-container has-[:checked]:border-primary">
+                                        <input class="w-5 h-5 text-primary border-outline-variant focus:ring-primary"
+                                            name="next_step" type="radio" value="variation" />
+                                        <div class="ml-4"><span
+                                                class="font-label-md text-label-md text-on-surface block">Try
+                                                variation</span><span
+                                                class="font-body-md text-body-md text-on-surface-variant text-sm">Small
+                                                adjustments needed for better alignment.</span></div>
+                                    </label>
+                                    <label
+                                        class="flex items-center p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-secondary-container has-[:checked]:border-primary">
+                                        <input class="w-5 h-5 text-primary border-outline-variant focus:ring-primary"
+                                            name="next_step" type="radio" value="switch" />
+                                        <div class="ml-4"><span
+                                                class="font-label-md text-label-md text-on-surface block">Switch
+                                                path</span><span
+                                                class="font-body-md text-body-md text-on-surface-variant text-sm">Pivot
+                                                required. This direction is not serving me.</span></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="pt-stack-sm pb-stack-lg flex justify-end">
+                        <button
+                            class="bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-full hover:scale-95 transition-transform duration-200 shadow-md flex items-center gap-2"
+                            id="pulse-submit" type="button">
+                            <span>Log Reflection</span>
+                            <span class="material-symbols-outlined filled-icon text-sm">check_circle</span>
+                        </button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </main>
+
+    <!-- PROFILE MODAL -->
+    <div id="modal-profile" class="fixed inset-0 z-[100] hidden items-center justify-center">
+        <!-- Backdrop -->
+        <div id="modal-profile-backdrop" class="absolute inset-0 bg-scrim/50 backdrop-blur-sm"></div>
+        
+        <!-- Modal Content -->
+        <div class="bg-surface-container-low rounded-[32px] p-stack-lg w-full max-w-sm mx-4 relative z-10 shadow-elevation-3 flex flex-col items-center">
+            <button id="modal-profile-close" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Profile Picture</h2>
+
+            <!-- Current Avatar Large -->
+            <div class="relative mb-stack-md group">
+                <div id="modal-current-avatar-container" class="w-32 h-32 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center border-4 border-surface shadow-md relative">
+                    <span id="modal-current-avatar-icon" class="material-symbols-outlined text-on-surface-variant" style="font-size: 64px;">account_circle</span>
+                    <img id="modal-current-avatar-img" src="" alt="Current Profile" class="w-full h-full object-cover hidden">
+                </div>
+            </div>
+
+            <!-- Preset Avatars -->
+            <h3 class="font-label-md text-label-md text-on-surface-variant mb-stack-sm w-full text-left uppercase tracking-wider">Choose preset</h3>
+            <div class="grid grid-cols-4 gap-4 mb-stack-lg w-full">
+                <!-- Using Unsplash Source or Pravatar for presets -->
+                <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=1">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="Preset 1" class="w-full h-full object-cover pointer-events-none">
+                </button>
+                <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=2">
+                    <img src="https://i.pravatar.cc/150?img=2" alt="Preset 2" class="w-full h-full object-cover pointer-events-none">
+                </button>
+                <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=3">
+                    <img src="https://i.pravatar.cc/150?img=3" alt="Preset 3" class="w-full h-full object-cover pointer-events-none">
+                </button>
+                <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=4">
+                    <img src="https://i.pravatar.cc/150?img=4" alt="Preset 4" class="w-full h-full object-cover pointer-events-none">
+                </button>
+            </div>
+
+            <!-- Upload Option -->
+            <div class="w-full mb-stack-lg">
+                <input type="file" id="profile-upload-input" accept="image/*" class="hidden">
+                <button id="btn-upload-profile" class="w-full bg-surface-container border border-outline-variant hover:bg-surface-variant text-on-surface py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined">upload</span>
+                    Upload from device
+                </button>
+            </div>
+
+            <!-- Log Out -->
+            <button id="modal-btn-logout" class="w-full text-error hover:bg-error-container/20 py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">logout</span>
+                Log Out
+            </button>
+        </div>
+    </div>
+
+    <!-- BOTTOM NAV (mobile) -->
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-surface/90 backdrop-blur-lg rounded-t-2xl shadow-[0_-8px_30px_rgb(0,0,0,0.04)]"
+        id="bottom-nav">
+        <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
+            data-screen="direction">
+            <span class="material-symbols-outlined mb-1">explore</span>
+            <span class="font-label-sm text-label-sm">Direction</span>
+        </a>
+        <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
+            data-screen="plan">
+            <span class="material-symbols-outlined mb-1">event_note</span>
+            <span class="font-label-sm text-label-sm">Plan</span>
+        </a>
+        <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
+            data-screen="pulse">
+            <span class="material-symbols-outlined mb-1">favorite</span>
+            <span class="font-label-sm text-label-sm">Pulse</span>
+        </a>
+        <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
+            data-screen="log">
+            <span class="material-symbols-outlined mb-1">lightbulb</span>
+            <span class="font-label-sm text-label-sm">Log</span>
+        </a>
+        <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
+            data-screen="journey">
+            <span class="material-symbols-outlined mb-1">map</span>
+            <span class="font-label-sm text-label-sm">Journey</span>
+        </a>
+    </nav>
+
+    <script>
+        // ── Router ────────────────────────────────────────────────
+        const SCREENS = ['onboarding', 'direction', 'plan', 'log', 'journey', 'pulse', 'auth'];
+        let currentScreen = 'onboarding';
+        let screenHistory = [];
+
+        window.goTo = function goTo(key, isBack = false) {
+            if (!SCREENS.includes(key)) return;
+            if (!isBack && currentScreen && currentScreen !== key) {
+                screenHistory.push(currentScreen);
+            }
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            const el = document.getElementById('screen-' + key);
+            if (el) { el.classList.add('active'); }
+            window.scrollTo(0, 0);
+            currentScreen = key;
+            window.currentScreen = currentScreen;
+
+            const btnBack = document.getElementById('btn-back');
+            if (btnBack) {
+                if (screenHistory.length > 0 && key !== 'onboarding') {
+                    btnBack.classList.remove('hidden');
+                } else {
+                    btnBack.classList.add('hidden');
+                }
+            }
+
+            const isOnboarding = key === 'onboarding';
+            document.getElementById('desktop-nav').style.opacity = isOnboarding ? '0' : '1';
+            document.getElementById('desktop-nav').style.pointerEvents = isOnboarding ? 'none' : '';
+            document.getElementById('bottom-nav').style.display = isOnboarding ? 'none' : '';
+
+            // Desktop nav active state
+            document.querySelectorAll('.nav-link[data-screen]').forEach(a => {
+                if (a.dataset.screen === key) {
+                    a.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                    a.classList.remove('text-on-surface-variant');
+                } else {
+                    a.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                    a.classList.add('text-on-surface-variant');
+                }
+            });
+
+            // Mobile nav active state
+            document.querySelectorAll('.mobile-nav-btn').forEach(a => {
+                if (a.dataset.screen === key) {
+                    a.classList.add('nav-active', 'text-on-secondary-container');
+                    a.classList.remove('text-on-surface-variant');
+                } else {
+                    a.classList.remove('nav-active', 'text-on-secondary-container');
+                    a.classList.add('text-on-surface-variant');
+                }
+            });
+        }
+
+        // ── Click delegation ────────────────────────────────────
+        document.addEventListener('click', e => {
+            const btnBack = e.target.closest('#btn-back');
+            if (btnBack) {
+                e.preventDefault();
+                if (screenHistory.length > 0) {
+                    const prev = screenHistory.pop();
+                    window.goTo(prev, true);
+                }
+                return;
+            }
+            const btn = e.target.closest('[data-screen]');
+            if (btn) { e.preventDefault(); window.goTo(btn.dataset.screen); }
+        });
+
+        // ── Accordion ──────────────────────────────────────────
+        document.addEventListener('click', e => {
+            const btn = e.target.closest('.expand-btn');
+            if (!btn) return;
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.material-symbols-outlined');
+            if (!content) return;
+            content.classList.toggle('is-open');
+            icon.style.transform = content.classList.contains('is-open') ? 'rotate(180deg)' : '';
+        });
+
+        // ── Mark as tried ──────────────────────────────────────
+        document.getElementById('mark-tried-btn').addEventListener('click', function () {
+            this.classList.add('hidden');
+            const s = document.getElementById('tried-success');
+            s.classList.remove('hidden');
+            s.classList.add('flex');
+        });
+
+        // ── Daily Rhythm Calendar ──────────────────────────────
+        const calendar = document.getElementById('daily-rhythm-calendar');
+        if (calendar) {
+            const today = new Date();
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            let html = '';
+            for (let i = -2; i <= 2; i++) {
+                const d = new Date(today);
+                d.setDate(today.getDate() + i);
+                const dayName = days[d.getDay()];
+                const dateNum = d.getDate();
+                const isToday = i === 0;
+                
+                if (isToday) {
+                    html += `<div class="flex flex-col items-center p-stack-sm rounded-2xl bg-primary-container text-on-primary-container shadow-sm cursor-pointer scale-105 w-16 text-center">
+                        <span class="font-label-sm text-label-sm uppercase mb-1">${dayName}</span>
+                        <span class="font-headline-md text-headline-md font-bold">${dateNum}</span>
+                        <div class="w-1.5 h-1.5 rounded-full bg-primary mt-1"></div>
+                    </div>`;
+                } else {
+                    html += `<div class="flex flex-col items-center p-stack-sm rounded-2xl bg-surface-container-lowest text-on-surface-variant cursor-pointer hover:bg-surface-container-low transition-colors w-16 text-center">
+                        <span class="font-label-sm text-label-sm uppercase mb-1">${dayName}</span>
+                        <span class="font-headline-md text-headline-md">${dateNum}</span>
+                    </div>`;
+                }
+            }
+            calendar.innerHTML = html;
+        }
+
+        // ── Task buttons ───────────────────────────────────────
+        document.querySelectorAll('.task-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const row = this.closest('.flex.gap-2');
+                if (!row) return;
+                row.querySelectorAll('.task-btn').forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white', 'bg-secondary', 'text-white', 'bg-surface-variant', 'text-on-surface');
+                    b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                });
+                const v = this.dataset.val;
+                this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+                if (v === 'done') this.classList.add('bg-primary', 'text-white');
+                else if (v === 'partly') this.classList.add('bg-secondary', 'text-white');
+                else this.classList.add('bg-surface-variant', 'text-on-surface');
+                
+                if (window.saveDailyLogStatus) {
+                    window.saveDailyLogStatus(v);
+                }
+            });
+        });
+
+        // ── Add gentle intention ──────────────────────────────
+        const addIntentionBtn = document.getElementById('add-intention-btn');
+        const addIntentionForm = document.getElementById('add-intention-form');
+        const cancelIntentionBtn = document.getElementById('cancel-intention-btn');
+        const saveIntentionBtn = document.getElementById('save-intention-btn');
+        
+        if (addIntentionBtn && addIntentionForm) {
+            addIntentionBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                this.classList.add('hidden');
+                addIntentionForm.classList.remove('hidden');
+            });
+            
+            cancelIntentionBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                addIntentionForm.classList.add('hidden');
+                addIntentionBtn.classList.remove('hidden');
+                document.getElementById('intention-name').value = '';
+                document.getElementById('intention-desc').value = '';
+            });
+            
+            saveIntentionBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('intention-name').value.trim() || 'New Intention';
+                const desc = document.getElementById('intention-desc').value.trim();
+                
+                const customDayDiv = document.createElement('div');
+                customDayDiv.className = 'glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300 border-2 border-primary shadow-[0_0_20px_rgba(55,95,151,0.15)] relative overflow-hidden';
+                customDayDiv.innerHTML = `
+                    <h3 class="font-label-sm text-label-sm uppercase tracking-wider text-primary w-full border-b border-primary/20 pb-2 flex items-center justify-between">
+                        <span>Custom Intention</span>
+                    </h3>
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
+                        <div class="flex flex-col">
+                            <span class="font-body-lg text-on-surface font-medium">${name}</span>
+                            ${desc ? `<span class="text-sm text-on-surface-variant">${desc}</span>` : ''}
+                        </div>
+                        <div class="flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                            <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
+                            <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
+                            <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
+                            <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
+                        </div>
+                    </div>
+                `;
+                
+                customDayDiv.querySelectorAll('.task-btn').forEach(btn => {
+                    btn.addEventListener('click', function(ev) {
+                        ev.preventDefault();
+                        const row = this.closest('.flex.gap-4');
+                        if (!row) return;
+                        row.querySelectorAll('.task-btn').forEach(b => {
+                            b.classList.remove('bg-primary', 'text-white', 'bg-secondary', 'text-white', 'bg-surface-variant', 'text-on-surface');
+                            b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                        });
+                        const v = this.dataset.val;
+                        this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+                        if (v === 'done') this.classList.add('bg-primary', 'text-white');
+                        else if (v === 'partly') this.classList.add('bg-secondary', 'text-white');
+                        else this.classList.add('bg-surface-variant', 'text-on-surface');
+                    });
+                });
+                
+                addIntentionForm.insertAdjacentElement('beforebegin', customDayDiv);
+                
+                addIntentionForm.classList.add('hidden');
+                addIntentionBtn.classList.remove('hidden');
+                document.getElementById('intention-name').value = '';
+                document.getElementById('intention-desc').value = '';
+            });
+        }
+
+        // ── Daily log submit ──────────────────────────────────────
+        const dailySubmitBtn = document.getElementById('daily-submit');
+        if (dailySubmitBtn) {
+            dailySubmitBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                this.innerHTML = '<span class="material-symbols-outlined filled-icon text-sm">check_circle</span> Saved!';
+                this.classList.add('opacity-75', 'pointer-events-none');
+                setTimeout(() => goTo('journey'), 1200);
+            });
+        }
+        
+        // ── Setup dynamic day compartments ──────────────────────────────
+        const currentDay = new Date().getDay(); 
+        let todayVal = currentDay === 0 ? 7 : currentDay;
+        document.querySelectorAll('.day-compartment').forEach(comp => {
+            const day = parseInt(comp.dataset.day);
+            const title = comp.querySelector('.day-title');
+            const badge = comp.querySelector('.today-badge');
+            const btnsContainer = comp.querySelector('.task-buttons-container');
+            
+            if (day < todayVal) {
+                comp.classList.add('opacity-60', 'grayscale-[50%]', 'hover:grayscale-0', 'hover:opacity-100');
+            } else if (day === todayVal) {
+                comp.classList.add('border-2', 'border-primary', 'shadow-[0_0_20px_rgba(55,95,151,0.15)]', 'relative', 'overflow-hidden');
+                title.classList.remove('text-on-surface-variant', 'border-outline-variant/30');
+                title.classList.add('text-primary', 'border-primary/20');
+                badge.classList.remove('hidden');
+                comp.insertAdjacentHTML('afterbegin', '<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>');
+            } else {
+                comp.classList.add('opacity-50');
+                if (btnsContainer) btnsContainer.classList.add('opacity-50', 'pointer-events-none');
+            }
+        });
+
+        // ── Pulse submit ──────────────────────────────────────
+        const pulseSubmitBtn = document.getElementById('pulse-submit');
+        if (pulseSubmitBtn) {
+            pulseSubmitBtn.addEventListener('click', async function (e) {
+                e.preventDefault();
+                const selected = document.querySelector('input[name="next_step"]:checked')?.value;
+                this.innerHTML = '<span class="material-symbols-outlined filled-icon text-sm">check_circle</span> Saved!';
+                this.classList.add('opacity-75', 'pointer-events-none');
+                
+                if (window.savePulseReflection) {
+                    await window.savePulseReflection(selected);
+                }
+                setTimeout(() => goTo('log'), 1200);
+            });
+        }
+
+        // ── Auth Tabs ──────────────────────────────────────────
+        const tabLogin = document.getElementById('tab-login');
+        const tabSignup = document.getElementById('tab-signup');
+        const formLogin = document.getElementById('form-login');
+        const formSignup = document.getElementById('form-signup');
+
+        if (tabLogin && tabSignup) {
+            tabLogin.addEventListener('click', () => {
+                formLogin.classList.remove('hidden');
+                formSignup.classList.add('hidden');
+                tabLogin.classList.add('text-primary', 'border-primary');
+                tabLogin.classList.remove('text-on-surface-variant', 'border-transparent');
+                tabSignup.classList.add('text-on-surface-variant', 'border-transparent');
+                tabSignup.classList.remove('text-primary', 'border-primary');
+            });
+            tabSignup.addEventListener('click', () => {
+                formSignup.classList.remove('hidden');
+                formLogin.classList.add('hidden');
+                tabSignup.classList.add('text-primary', 'border-primary');
+                tabSignup.classList.remove('text-on-surface-variant', 'border-transparent');
+                tabLogin.classList.add('text-on-surface-variant', 'border-transparent');
+                tabLogin.classList.remove('text-primary', 'border-primary');
+            });
+        }
+
+        // ── Init ─────────────────────────────────────────────
+        goTo('onboarding');
+    </script>
+    <script type="module" src="/auth.js"></script>
+</body>
+
+</html>
