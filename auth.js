@@ -311,10 +311,12 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Successfully saved pulse reflection:", nextStep);
         }
     };
-});
-        // -- Save Weekly Plan Direction (from Direction page) ---------------------
+    // -- Save Weekly Plan Direction (from Direction page) ---------------------
     window.saveWeeklyPlanDirection = async (direction) => {
-        if (!currentUser) return;
+        if (!currentUser) {
+            console.log("Cannot save weekly plan direction: User not logged in.");
+            return;
+        }
         const { data, error } = await supabase.from('weekly_plans').insert({
             user_id: currentUser.id,
             week_number: 1,
@@ -327,7 +329,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // -- Update Weekly Plan Task (from Plan page) ----------------------
     window.updateWeeklyPlanTask = async (taskDesc) => {
-        if (!currentUser) return;
+        if (!currentUser) {
+            console.log("Cannot update weekly plan task: User not logged in.");
+            return;
+        }
         const { data, error } = await supabase.from('weekly_plans')
             .update({ task_description: taskDesc })
             .eq('user_id', currentUser.id)
@@ -335,4 +340,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (error) console.error('Error updating weekly plan task:', error);
         else console.log('Successfully updated weekly plan task');
     };
+});
 
