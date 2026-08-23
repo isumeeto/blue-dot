@@ -300,9 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         console.log("Saving pulse reflection:", nextStep);
         
-        const { data, error } = await supabase.from('pulse_reflections').insert({
+        const { data, error } = await supabase.from('pulse_checks').insert({
             user_id: currentUser.id,
-            next_step: nextStep
+            next_step_choice: nextStep
         });
         
         if (error) {
