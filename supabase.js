@@ -22,4 +22,11 @@ if (!supabaseUrl || !supabaseKey) {
   console.warn('Supabase URL or Key is missing. Make sure your environment variables are set.');
 }
 
+console.log("=== SUPABASE INITIALIZATION ===");
+console.log("Checking Environment Variables:");
+console.log("URL is", supabaseUrl ? "SET (starts with " + supabaseUrl.substring(0, 15) + ")" : "NOT SET");
+console.log("Anon Key is", supabaseKey ? "SET (starts with " + supabaseKey.substring(0, 10) + ")" : "NOT SET");
+console.log("IMPORTANT: If deploying to Netlify using Vite, make sure your variables are named VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY. Variables without the VITE_ prefix will NOT be bundled by Vite!");
+console.log("===============================");
+
 export const supabase = createClient(supabaseUrl || '', supabaseKey || '');

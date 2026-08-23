@@ -204,20 +204,32 @@ document.addEventListener('DOMContentLoaded', () => {
         btnSignup.textContent = 'Signing up...';
         btnSignup.disabled = true;
 
+        console.log("=========================================");
+        console.log("🚀 SUPABASE SIGNUP CALL INITIATED");
         console.log("Attempting to sign up user with email:", signupEmail.value);
+        console.log("=========================================");
+        
         const { data, error } = await supabase.auth.signUp({
             email: signupEmail.value,
             password: signupPassword.value
         });
-        console.log("Sign up response:", { data, error });
-
+        
+        console.log("=========================================");
+        console.log("✅ SUPABASE SIGNUP CALL COMPLETED");
+        console.log("Sign up response data:", data);
+        
         if (error) {
-            console.error("Sign up error:", error);
+            console.error("❌ Sign up returned an error:", error);
+            console.error("Error Message:", error.message);
+            console.log("=========================================");
             signupError.textContent = error.message;
             signupError.classList.remove('hidden');
             btnSignup.textContent = 'Sign Up';
             btnSignup.disabled = false;
             return;
+        } else {
+            console.log("No error returned from signUp.");
+            console.log("=========================================");
         }
 
         // If signup is successful, add to users table
