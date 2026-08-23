@@ -1,3 +1,4 @@
+<!-- Page Layout Flow Adjustments Comment -->
 <!DOCTYPE html>
 <html class="light" lang="en">
 
@@ -144,12 +145,14 @@
 
         input[type=range] {
             -webkit-appearance: none;
+            appearance: none;
             width: 100%;
             background: transparent
         }
 
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
+            appearance: none;
             height: 24px;
             width: 24px;
             border-radius: 50%;
@@ -273,7 +276,9 @@
     <header id="topbar"
         class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-md shadow-sm transition-all">
         <div class="flex items-center gap-2">
-            <button id="btn-back" class="hidden text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant/50 flex items-center" title="Go Back">
+            <button id="btn-back"
+                class="hidden text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant/50 flex items-center"
+                title="Go Back">
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
             <div class="font-display text-headline-md font-semibold text-primary cursor-pointer nav-link"
@@ -285,9 +290,9 @@
             <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
                 data-screen="plan">Plan</a>
             <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
-                data-screen="pulse">Pulse</a>
-            <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
                 data-screen="log">Log</a>
+            <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
+                data-screen="pulse">Pulse</a>
             <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1 cursor-pointer"
                 data-screen="journey">Journey</a>
         </nav>
@@ -353,51 +358,81 @@
         </div>
         <!-- SCREEN: AUTH (Login / Sign Up) -->
         <div class="screen" id="screen-auth">
-            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-md flex flex-col items-center justify-center min-h-[70vh]">
-                <div id="auth-forms-container" class="glass-card w-full max-w-[400px] rounded-2xl p-stack-md flex flex-col gap-stack-sm anim-fade-in-up">
+            <div
+                class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-md flex flex-col items-center justify-center min-h-[70vh]">
+                <div id="auth-forms-container"
+                    class="glass-card w-full max-w-[400px] rounded-2xl p-stack-md flex flex-col gap-stack-sm anim-fade-in-up">
                     <div class="flex border-b border-outline-variant mb-4">
-                        <button id="tab-login" class="flex-1 py-2 font-label-md text-label-md text-primary border-b-2 border-primary transition-colors">Log In</button>
-                        <button id="tab-signup" class="flex-1 py-2 font-label-md text-label-md text-on-surface-variant border-b-2 border-transparent hover:text-primary transition-colors">Sign Up</button>
+                        <button id="tab-login"
+                            class="flex-1 py-2 font-label-md text-label-md text-primary border-b-2 border-primary transition-colors">Log
+                            In</button>
+                        <button id="tab-signup"
+                            class="flex-1 py-2 font-label-md text-label-md text-on-surface-variant border-b-2 border-transparent hover:text-primary transition-colors">Sign
+                            Up</button>
                     </div>
 
                     <!-- Log In Form -->
                     <form id="form-login" class="flex flex-col gap-4">
-                        <div id="login-error" class="hidden font-label-sm text-error bg-error-container text-on-error-container p-3 rounded-lg"></div>
+                        <div id="login-error"
+                            class="hidden font-label-sm text-error bg-error-container text-on-error-container p-3 rounded-lg">
+                        </div>
                         <div class="flex flex-col gap-2">
                             <label class="font-label-sm text-label-sm text-on-surface-variant">Email</label>
-                            <input type="email" id="login-email" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="you@example.com" />
+                            <input type="email" id="login-email" required
+                                class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors"
+                                placeholder="you@example.com" />
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="font-label-sm text-label-sm text-on-surface-variant">Password</label>
-                            <input type="password" id="login-password" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="••••••••" />
+                            <input type="password" id="login-password" required
+                                class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors"
+                                placeholder="••••••••" />
                         </div>
-                        <button type="submit" id="btn-login" class="w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md mt-2 flex justify-center items-center gap-2">Log In</button>
+                        <button type="submit" id="btn-login"
+                            class="w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md mt-2 flex justify-center items-center gap-2">Log
+                            In</button>
                     </form>
 
                     <!-- Sign Up Form (hidden by default) -->
                     <form id="form-signup" class="flex flex-col gap-4 hidden">
-                        <div id="signup-error" class="hidden font-label-sm text-error bg-error-container text-on-error-container p-3 rounded-lg"></div>
-                        <div id="signup-success" class="hidden font-label-sm text-primary bg-primary-container text-on-primary-container p-3 rounded-lg"></div>
+                        <div id="signup-error"
+                            class="hidden font-label-sm text-error bg-error-container text-on-error-container p-3 rounded-lg">
+                        </div>
+                        <div id="signup-success"
+                            class="hidden font-label-sm text-primary bg-primary-container text-on-primary-container p-3 rounded-lg">
+                        </div>
                         <div class="flex flex-col gap-2">
                             <label class="font-label-sm text-label-sm text-on-surface-variant">Email</label>
-                            <input type="email" id="signup-email" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="you@example.com" />
+                            <input type="email" id="signup-email" required
+                                class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors"
+                                placeholder="you@example.com" />
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="font-label-sm text-label-sm text-on-surface-variant">Password</label>
-                            <input type="password" id="signup-password" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="Create a password" />
+                            <input type="password" id="signup-password" required
+                                class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors"
+                                placeholder="Create a password" />
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="font-label-sm text-label-sm text-on-surface-variant">Confirm Password</label>
-                            <input type="password" id="signup-confirm" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="Confirm your password" />
+                            <input type="password" id="signup-confirm" required
+                                class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors"
+                                placeholder="Confirm your password" />
                         </div>
-                        <button type="submit" id="btn-signup" class="w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md mt-2 flex justify-center items-center gap-2">Sign Up</button>
+                        <button type="submit" id="btn-signup"
+                            class="w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md mt-2 flex justify-center items-center gap-2">Sign
+                            Up</button>
                     </form>
                 </div>
-                <div id="auth-logged-in-container" class="hidden glass-card w-full max-w-[400px] rounded-2xl p-stack-md flex flex-col items-center justify-center gap-stack-sm anim-fade-in-up">
+                <div id="auth-logged-in-container"
+                    class="hidden glass-card w-full max-w-[400px] rounded-2xl p-stack-md flex flex-col items-center justify-center gap-stack-sm anim-fade-in-up">
                     <span class="material-symbols-outlined text-primary text-[48px]">check_circle</span>
                     <h2 class="font-headline-md text-headline-md text-on-surface text-center">You are logged in!</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant text-center mb-4">Ready to continue your journey.</p>
-                    <button class="nav-link w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md flex justify-center items-center gap-2" data-screen="onboarding">Continue</button>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-center mb-4">Ready to continue your
+                        journey.</p>
+                    <button
+                        class="nav-link w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95 shadow-md flex justify-center items-center gap-2"
+                        data-screen="onboarding">Continue</button>
                 </div>
             </div>
         </div>
@@ -625,7 +660,8 @@
                                 class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full font-label-sm text-label-sm inline-flex items-center gap-1 w-fit"><span
                                     class="material-symbols-outlined text-[14px]">psychology</span>Inference</span>
                             <h2 class="font-headline-md text-headline-md text-on-surface">UX Engineer</h2>
-                            <p class="font-body-md text-body-md text-on-surface-variant">Focuses on bridging design and development to create seamless user experiences.</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Focuses on bridging design and
+                                development to create seamless user experiences.</p>
                         </header>
                         <div class="expand-wrapper mt-4">
                             <button
@@ -644,7 +680,8 @@
                                                     class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>High
                                                 creative fulfillment</li>
                                             <li class="flex items-start gap-2"><span
-                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>Cross-functional</li>
+                                                    class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>Cross-functional
+                                            </li>
                                         </ul>
                                     </div>
                                     <div>
@@ -653,7 +690,8 @@
                                             Considerations</h4>
                                         <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface">
                                             <li class="flex items-start gap-2"><span
-                                                    class="material-symbols-outlined text-outline text-[20px] mt-0.5">info</span>Constantly shifting tooling</li>
+                                                    class="material-symbols-outlined text-outline text-[20px] mt-0.5">info</span>Constantly
+                                                shifting tooling</li>
                                         </ul>
                                     </div>
                                     <div>
@@ -662,9 +700,11 @@
                                             Core Skills Needed</h4>
                                         <div class="flex flex-wrap gap-2">
                                             <span
-                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">CSS & Prototyping</span>
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">CSS
+                                                & Prototyping</span>
                                             <span
-                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">User Research</span>
+                                                class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">User
+                                                Research</span>
                                         </div>
                                     </div>
                                 </div>
@@ -712,12 +752,16 @@
                                 <span class="material-symbols-outlined text-[18px]">schedule</span>Est. 30 mins
                             </p>
                         </div>
-                        <div class="w-full flex items-center bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-3 shadow-sm mb-stack-md hover:bg-surface-container-low transition-colors focus-within:bg-surface-container-low focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
-                            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-3 shrink-0 shadow-sm">
+                        <div
+                            class="w-full flex items-center bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-3 shadow-sm mb-stack-md hover:bg-surface-container-low transition-colors focus-within:bg-surface-container-low focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+                            <div
+                                class="w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-3 shrink-0 shadow-sm">
                                 <span class="material-symbols-outlined text-on-primary text-[18px]">trip_origin</span>
                             </div>
-                            <input type="text" placeholder="Type here or tap to talk..." class="bg-transparent border-none outline-none text-on-surface font-body-md flex-1 text-left placeholder:text-on-surface-variant placeholder:opacity-70 w-full" />
-                            <button class="shrink-0 text-primary hover:text-primary/80 transition-colors flex items-center justify-center cursor-pointer ml-2">
+                            <input type="text" placeholder="Type here or tap to talk..."
+                                class="bg-transparent border-none outline-none text-on-surface font-body-md flex-1 text-left placeholder:text-on-surface-variant placeholder:opacity-70 w-full" />
+                            <button
+                                class="shrink-0 text-primary hover:text-primary/80 transition-colors flex items-center justify-center cursor-pointer ml-2">
                                 <span class="material-symbols-outlined filled-icon text-[24px]">mic</span>
                             </button>
                         </div>
@@ -745,163 +789,254 @@
         <div class="screen" id="screen-log">
             <main class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-20 relative">
                 <form id="pulse-form" class="space-y-stack-md max-w-3xl mx-auto relative z-10">
-                <div class="absolute top-4 right-4 md:right-8 w-20 h-20 opacity-30 pointer-events-none z-0">
-                    <div class="w-full h-full rounded-full bg-primary-fixed flex items-center justify-center">
-                        <span class="material-symbols-outlined filled-icon text-primary"
-                            style="font-size:32px;">trip_origin</span>
+                    <div class="absolute top-4 right-4 md:right-8 w-20 h-20 opacity-30 pointer-events-none z-0">
+                        <div class="w-full h-full rounded-full bg-primary-fixed flex items-center justify-center">
+                            <span class="material-symbols-outlined filled-icon text-primary"
+                                style="font-size:32px;">trip_origin</span>
+                        </div>
                     </div>
-                </div>
-                <section class="mb-stack-lg text-center mt-stack-md relative z-10">
-                    <h1
-                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-stack-sm">
-                        Your Daily Rhythm</h1>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant">A gentle record of time.</p>
-                </section>
-                <section class="mb-stack-lg overflow-x-auto pb-4 hide-scrollbar relative z-10">
-                    <div id="daily-rhythm-calendar" class="flex gap-gutter justify-start md:justify-center min-w-max px-2">
-                        <!-- Rendered by JS -->
-                    </div>
-                </section>
-                <section class="max-w-2xl mx-auto space-y-stack-md relative z-10">
-                    <div class="space-y-4" id="log-days-container">
-                        <!-- Monday -->
-                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="1">
-                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
-                                <span>Monday</span>
-                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
-                            </h3>
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
-                                <span class="font-body-lg text-on-surface font-medium">Review portfolio</span>
-                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
-                                </div>
-                            </div>
+                    <section class="mb-stack-lg text-center mt-stack-md relative z-10">
+                        <h1
+                            class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-stack-sm">
+                            Your Daily Rhythm</h1>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant">A gentle record of time.</p>
+                    </section>
+                    <section class="mb-stack-lg overflow-x-auto pb-4 hide-scrollbar relative z-10">
+                        <div id="daily-rhythm-calendar"
+                            class="flex gap-gutter justify-start md:justify-center min-w-max px-2">
+                            <!-- Rendered by JS -->
                         </div>
-
-                        <!-- Tuesday -->
-                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="2">
-                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
-                                <span>Tuesday</span>
-                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
-                            </h3>
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
-                                <span class="font-body-lg text-on-surface font-medium">Update resume</span>
-                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Wednesday -->
-                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="3">
-                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
-                                <span>Wednesday</span>
-                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
-                            </h3>
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
-                                <span class="font-body-lg text-on-surface font-medium">Read industry article</span>
-                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Thursday -->
-                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="4">
-                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
-                                <span>Thursday</span>
-                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
-                            </h3>
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
-                                <span class="font-body-lg text-on-surface font-medium">Reach out to a connection</span>
-                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Friday -->
-                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="5">
-                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
-                                <span>Friday</span>
-                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
-                            </h3>
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
-                                <span class="font-body-lg text-on-surface font-medium">Organize notes</span>
-                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Saturday -->
-                        <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300" data-day="6">
-                            <h3 class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
-                                <span>Saturday</span>
-                                <span class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
-                            </h3>
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
-                                <span class="font-body-lg text-on-surface font-medium">Reflect on week</span>
-                                <div class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
-                                    <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sunday (Special AI Session) -->
-                        <div
-                            class="rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-300 bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container shadow-sm border border-primary/20">
-                            <div class="flex flex-col gap-1 w-full text-center sm:text-left">
-                                <h3 class="font-label-sm text-label-sm uppercase tracking-wider opacity-80 flex items-center justify-center sm:justify-start gap-1">
-                                    <span class="material-symbols-outlined text-[16px]">auto_awesome</span> Sunday Bonus
+                    </section>
+                    <section class="max-w-2xl mx-auto space-y-stack-md relative z-10">
+                        <div class="space-y-4" id="log-days-container">
+                            <!-- Monday -->
+                            <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300"
+                                data-day="1">
+                                <h3
+                                    class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                    <span>Monday</span>
+                                    <span
+                                        class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
                                 </h3>
-                                <span class="font-headline-sm text-headline-sm font-medium">30-minute talk session with AI agent</span>
+                                <div
+                                    class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                    <span class="font-body-lg text-on-surface font-medium">Review portfolio</span>
+                                    <div
+                                        class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors"
+                                            data-val="done">Done</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors"
+                                            data-val="partly">Partly</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="skip">Skipped</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="gently">Gently</button>
+                                    </div>
+                                </div>
                             </div>
-                            <button class="shrink-0 bg-primary text-on-primary px-6 py-3 rounded-full font-label-md hover:bg-primary/90 transition-colors shadow-md opacity-50 pointer-events-none" title="Coming soon">
-                                Join Session
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-4 pt-4">
-                        <button id="add-intention-btn"
-                            class="w-full py-4 border-2 border-dashed border-outline-variant rounded-2xl text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
-                            <span class="material-symbols-outlined">add</span>Add gentle intention
-                        </button>
-                        <div id="add-intention-form" class="hidden w-full p-4 border border-outline-variant rounded-2xl flex flex-col gap-3">
-                            <input type="text" id="intention-name" placeholder="Task name..." class="bg-surface-container-low rounded-lg px-3 py-2 outline-none border border-transparent focus:border-primary text-on-surface w-full" />
-                            <textarea id="intention-desc" placeholder="Short description..." class="bg-surface-container-low rounded-lg px-3 py-2 outline-none border border-transparent focus:border-primary text-on-surface resize-none w-full"></textarea>
-                            <div class="flex justify-end gap-2">
-                                <button id="cancel-intention-btn" class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">Cancel</button>
-                                <button id="save-intention-btn" class="px-4 py-2 bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-colors">Save</button>
+
+                            <!-- Tuesday -->
+                            <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300"
+                                data-day="2">
+                                <h3
+                                    class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                    <span>Tuesday</span>
+                                    <span
+                                        class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                                </h3>
+                                <div
+                                    class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                    <span class="font-body-lg text-on-surface font-medium">Update resume</span>
+                                    <div
+                                        class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors"
+                                            data-val="done">Done</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors"
+                                            data-val="partly">Partly</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="skip">Skipped</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="gently">Gently</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Wednesday -->
+                            <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300"
+                                data-day="3">
+                                <h3
+                                    class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                    <span>Wednesday</span>
+                                    <span
+                                        class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                                </h3>
+                                <div
+                                    class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                    <span class="font-body-lg text-on-surface font-medium">Read industry article</span>
+                                    <div
+                                        class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors"
+                                            data-val="done">Done</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors"
+                                            data-val="partly">Partly</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="skip">Skipped</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="gently">Gently</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Thursday -->
+                            <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300"
+                                data-day="4">
+                                <h3
+                                    class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                    <span>Thursday</span>
+                                    <span
+                                        class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                                </h3>
+                                <div
+                                    class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                    <span class="font-body-lg text-on-surface font-medium">Reach out to a
+                                        connection</span>
+                                    <div
+                                        class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors"
+                                            data-val="done">Done</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors"
+                                            data-val="partly">Partly</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="skip">Skipped</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="gently">Gently</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Friday -->
+                            <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300"
+                                data-day="5">
+                                <h3
+                                    class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                    <span>Friday</span>
+                                    <span
+                                        class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                                </h3>
+                                <div
+                                    class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                    <span class="font-body-lg text-on-surface font-medium">Organize notes</span>
+                                    <div
+                                        class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors"
+                                            data-val="done">Done</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors"
+                                            data-val="partly">Partly</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="skip">Skipped</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="gently">Gently</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Saturday -->
+                            <div class="day-compartment glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300"
+                                data-day="6">
+                                <h3
+                                    class="day-title font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant w-full border-b border-outline-variant/30 pb-2 flex items-center justify-between relative z-10">
+                                    <span>Saturday</span>
+                                    <span
+                                        class="today-badge hidden bg-primary text-on-primary px-2 py-0.5 rounded-full text-[10px]">TODAY</span>
+                                </h3>
+                                <div
+                                    class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full relative z-10">
+                                    <span class="font-body-lg text-on-surface font-medium">Reflect on week</span>
+                                    <div
+                                        class="task-buttons-container flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors"
+                                            data-val="done">Done</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors"
+                                            data-val="partly">Partly</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="skip">Skipped</button>
+                                        <button
+                                            class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors"
+                                            data-val="gently">Gently</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sunday (Special AI Session) -->
+                            <div
+                                class="rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-300 bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container shadow-sm border border-primary/20">
+                                <div class="flex flex-col gap-1 w-full text-center sm:text-left">
+                                    <h3
+                                        class="font-label-sm text-label-sm uppercase tracking-wider opacity-80 flex items-center justify-center sm:justify-start gap-1">
+                                        <span class="material-symbols-outlined text-[16px]">auto_awesome</span> Sunday
+                                        Bonus
+                                    </h3>
+                                    <span class="font-headline-sm text-headline-sm font-medium">30-minute talk session
+                                        with AI agent</span>
+                                </div>
+                                <button
+                                    class="shrink-0 bg-primary text-on-primary px-6 py-3 rounded-full font-label-md hover:bg-primary/90 transition-colors shadow-md opacity-50 pointer-events-none"
+                                    title="Coming soon">
+                                    Join Session
+                                </button>
                             </div>
                         </div>
-                        <div class="flex justify-end">
-                            <button id="daily-submit"
-                                class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:scale-95 transition-transform duration-200 shadow-sm flex items-center gap-2">
-                                Gently Save <span class="material-symbols-outlined filled-icon text-sm">favorite</span>
+                        <div class="flex flex-col gap-4 pt-4">
+                            <button id="add-intention-btn"
+                                class="w-full py-4 border-2 border-dashed border-outline-variant rounded-2xl text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined">add</span>Add gentle intention
                             </button>
+                            <div id="add-intention-form"
+                                class="hidden w-full p-4 border border-outline-variant rounded-2xl flex flex-col gap-3">
+                                <input type="text" id="intention-name" placeholder="Task name..."
+                                    class="bg-surface-container-low rounded-lg px-3 py-2 outline-none border border-transparent focus:border-primary text-on-surface w-full" />
+                                <textarea id="intention-desc" placeholder="Short description..."
+                                    class="bg-surface-container-low rounded-lg px-3 py-2 outline-none border border-transparent focus:border-primary text-on-surface resize-none w-full"></textarea>
+                                <div class="flex justify-end gap-2">
+                                    <button id="cancel-intention-btn"
+                                        class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">Cancel</button>
+                                    <button id="save-intention-btn"
+                                        class="px-4 py-2 bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-colors">Save</button>
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <button id="daily-submit"
+                                    class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:scale-95 transition-transform duration-200 shadow-sm flex items-center gap-2">
+                                    Gently Save <span
+                                        class="material-symbols-outlined filled-icon text-sm">favorite</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </section>
-            </div>
+                    </section>
+        </div>
         </div>
         <!-- SCREEN 5: JOURNEY / EVOLVING PROFILE -->
         <div class="screen" id="screen-journey">
@@ -919,19 +1054,27 @@
                     <div class="timeline-line hidden md:block"></div>
                     <div class="space-y-stack-lg relative">
                         <!-- Week 1-2 -->
-                        <div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up" style="animation-delay: 100ms;">
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up"
+                            style="animation-delay: 100ms;">
                             <div class="md:w-1/2 flex justify-end md:pr-stack-md text-center md:text-right">
                                 <div
                                     class="glass-card rounded-2xl p-stack-md w-full max-w-sm hover:-translate-y-2 hover:shadow-xl hover:border-primary/30 border border-transparent transition-all duration-300 cursor-pointer group relative overflow-hidden">
-                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">Initial
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">
+                                        Initial
                                         Exploration</h3>
-                                    <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">Broad tasks
+                                    <p
+                                        class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">
+                                        Broad tasks
                                         to sense direction. Energy was scattered but curious.</p>
                                     <div class="flex items-center md:justify-end gap-2 text-primary relative z-10">
-                                        <span class="material-symbols-outlined text-[18px] group-hover:scale-125 transition-transform duration-300">explore</span>
+                                        <span
+                                            class="material-symbols-outlined text-[18px] group-hover:scale-125 transition-transform duration-300">explore</span>
                                         <span class="font-label-md text-label-md">High Discovery</span>
                                     </div>
-                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full"><div class="h-full bg-primary/40 group-hover:bg-primary transition-colors" style="width: 25%"></div></div>
+                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full">
+                                        <div class="h-full bg-primary/40 group-hover:bg-primary transition-colors"
+                                            style="width: 25%"></div>
+                                    </div>
                                 </div>
                             </div>
                             <div
@@ -953,23 +1096,30 @@
                             </div>
                         </div>
                         <!-- Week 3-4 -->
-                        <div
-                            class="flex flex-col md:flex-row-reverse items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up" style="animation-delay: 400ms;">
+                        <div class="flex flex-col md:flex-row-reverse items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up"
+                            style="animation-delay: 400ms;">
                             <div class="md:w-1/2 flex justify-start md:pl-stack-md text-center md:text-left">
                                 <div
                                     class="glass-card rounded-2xl p-stack-md w-full max-w-sm hover:-translate-y-2 hover:shadow-xl hover:border-primary/30 border border-transparent transition-all duration-300 cursor-pointer group relative overflow-hidden">
                                     <div
                                         class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-bl-full -z-10 group-hover:bg-primary-container/30 transition-colors">
                                     </div>
-                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">Finding Flow
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">
+                                        Finding Flow
                                     </h3>
-                                    <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">Narrowing
+                                    <p
+                                        class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">
+                                        Narrowing
                                         focus to creative problem solving. Enjoyment metrics spiked.</p>
                                     <div class="flex items-center gap-2 text-primary relative z-10">
-                                        <span class="material-symbols-outlined text-[18px] group-hover:scale-125 transition-transform duration-300">psychology</span>
+                                        <span
+                                            class="material-symbols-outlined text-[18px] group-hover:scale-125 transition-transform duration-300">psychology</span>
                                         <span class="font-label-md text-label-md">Deep Focus</span>
                                     </div>
-                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full"><div class="h-full bg-primary/40 group-hover:bg-primary transition-colors" style="width: 50%"></div></div>
+                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full">
+                                        <div class="h-full bg-primary/40 group-hover:bg-primary transition-colors"
+                                            style="width: 50%"></div>
+                                    </div>
                                 </div>
                             </div>
                             <div
@@ -991,32 +1141,40 @@
                             </div>
                         </div>
                         <!-- Present -->
-                        <div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up" style="animation-delay: 700ms;">
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md w-full relative opacity-0 anim-fade-in-up"
+                            style="animation-delay: 700ms;">
                             <div class="md:w-1/2 flex justify-end md:pr-stack-md text-center md:text-right">
                                 <div
                                     class="glass-card rounded-2xl p-stack-md w-full max-w-sm border-primary/20 shadow-[0_8px_32px_rgba(55,95,151,0.08)] hover:-translate-y-2 hover:shadow-xl hover:border-primary/50 transition-all duration-300 cursor-pointer group relative overflow-hidden">
                                     <div class="flex justify-center md:justify-end mb-4 relative z-10">
                                         <div
                                             class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                                            <span class="material-symbols-outlined group-hover:rotate-12 transition-transform duration-300">lightbulb</span>
+                                            <span
+                                                class="material-symbols-outlined group-hover:rotate-12 transition-transform duration-300">lightbulb</span>
                                         </div>
                                     </div>
-                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">Current
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-base relative z-10">
+                                        Current
                                         Alignment</h3>
-                                    <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">You&#39;ve
+                                    <p
+                                        class="font-body-md text-body-md text-on-surface-variant mb-stack-sm relative z-10">
+                                        You&#39;ve
                                         found a natural cadence in leadership and ideation.</p>
                                     <div class="mt-4 text-left relative z-10">
                                         <div class="flex justify-between mb-1">
                                             <span
                                                 class="font-label-sm text-label-sm text-on-surface-variant">Clarity</span>
-                                            <span class="font-label-sm text-label-sm text-primary group-hover:font-bold transition-all">High</span>
+                                            <span
+                                                class="font-label-sm text-label-sm text-primary group-hover:font-bold transition-all">High</span>
                                         </div>
                                         <div
                                             class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
                                             <div class="h-full bg-primary rounded-full w-[85%]"></div>
                                         </div>
                                     </div>
-                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full"><div class="h-full bg-primary" style="width: 85%"></div></div>
+                                    <div class="absolute bottom-0 left-0 h-1 bg-primary/10 w-full">
+                                        <div class="h-full bg-primary" style="width: 85%"></div>
+                                    </div>
                                 </div>
                             </div>
                             <div
@@ -1104,31 +1262,36 @@
                                     value="1" />
                                 <div
                                     class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors text-center px-1">
-                                    <span class="font-label-sm text-label-sm leading-tight">Just Started</span></div>
+                                    <span class="font-label-sm text-label-sm leading-tight">Just Started</span>
+                                </div>
                             </label>
                             <label class="cursor-pointer group"><input class="peer sr-only" name="progress" type="radio"
                                     value="2" />
                                 <div
                                     class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors">
-                                    <span class="font-label-md text-label-md">Q1</span></div>
+                                    <span class="font-label-md text-label-md">Q1</span>
+                                </div>
                             </label>
                             <label class="cursor-pointer group"><input checked class="peer sr-only" name="progress"
                                     type="radio" value="3" />
                                 <div
                                     class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors">
-                                    <span class="font-label-md text-label-md">Halfway</span></div>
+                                    <span class="font-label-md text-label-md">Halfway</span>
+                                </div>
                             </label>
                             <label class="cursor-pointer group"><input class="peer sr-only" name="progress" type="radio"
                                     value="4" />
                                 <div
                                     class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors">
-                                    <span class="font-label-md text-label-md">Q3</span></div>
+                                    <span class="font-label-md text-label-md">Q3</span>
+                                </div>
                             </label>
                             <label class="cursor-pointer group"><input class="peer sr-only" name="progress" type="radio"
                                     value="5" />
                                 <div
                                     class="h-12 flex items-center justify-center rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container group-hover:bg-surface-container transition-colors">
-                                    <span class="font-label-md text-label-md">Arrived</span></div>
+                                    <span class="font-label-md text-label-md">Arrived</span>
+                                </div>
                             </label>
                         </div>
                     </section>
@@ -1205,10 +1368,12 @@
     <div id="modal-profile" class="fixed inset-0 z-[100] hidden items-center justify-center">
         <!-- Backdrop -->
         <div id="modal-profile-backdrop" class="absolute inset-0 bg-scrim/50 backdrop-blur-sm"></div>
-        
+
         <!-- Modal Content -->
-        <div class="bg-surface-container-low rounded-[32px] p-stack-lg w-full max-w-sm mx-4 relative z-10 shadow-elevation-3 flex flex-col items-center">
-            <button id="modal-profile-close" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface transition-colors">
+        <div
+            class="bg-surface-container-low rounded-[32px] p-stack-lg w-full max-w-sm mx-4 relative z-10 shadow-elevation-3 flex flex-col items-center">
+            <button id="modal-profile-close"
+                class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface transition-colors">
                 <span class="material-symbols-outlined">close</span>
             </button>
 
@@ -1216,41 +1381,60 @@
 
             <!-- Current Avatar Large -->
             <div class="relative mb-stack-md group">
-                <div id="modal-current-avatar-container" class="w-32 h-32 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center border-4 border-surface shadow-md relative">
-                    <span id="modal-current-avatar-icon" class="material-symbols-outlined text-on-surface-variant" style="font-size: 64px;">account_circle</span>
-                    <img id="modal-current-avatar-img" src="" alt="Current Profile" class="w-full h-full object-cover hidden">
+                <div id="modal-current-avatar-container"
+                    class="w-32 h-32 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center border-4 border-surface shadow-md relative">
+                    <span id="modal-current-avatar-icon" class="material-symbols-outlined text-on-surface-variant"
+                        style="font-size: 64px;">account_circle</span>
+                    <img id="modal-current-avatar-img" src="" alt="Current Profile"
+                        class="w-full h-full object-cover hidden">
                 </div>
             </div>
 
             <!-- Preset Avatars -->
-            <h3 class="font-label-md text-label-md text-on-surface-variant mb-stack-sm w-full text-left uppercase tracking-wider">Choose preset</h3>
+            <h3
+                class="font-label-md text-label-md text-on-surface-variant mb-stack-sm w-full text-left uppercase tracking-wider">
+                Choose preset</h3>
             <div class="grid grid-cols-4 gap-4 mb-stack-lg w-full">
                 <!-- Using Unsplash Source or Pravatar for presets -->
-                <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=1">
-                    <img src="https://i.pravatar.cc/150?img=1" alt="Preset 1" class="w-full h-full object-cover pointer-events-none">
+                <button
+                    class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto"
+                    data-src="https://i.pravatar.cc/150?img=1">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="Preset 1"
+                        class="w-full h-full object-cover pointer-events-none">
                 </button>
-                <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=2">
-                    <img src="https://i.pravatar.cc/150?img=2" alt="Preset 2" class="w-full h-full object-cover pointer-events-none">
+                <button
+                    class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto"
+                    data-src="https://i.pravatar.cc/150?img=2">
+                    <img src="https://i.pravatar.cc/150?img=2" alt="Preset 2"
+                        class="w-full h-full object-cover pointer-events-none">
                 </button>
-                <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=3">
-                    <img src="https://i.pravatar.cc/150?img=3" alt="Preset 3" class="w-full h-full object-cover pointer-events-none">
+                <button
+                    class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto"
+                    data-src="https://i.pravatar.cc/150?img=3">
+                    <img src="https://i.pravatar.cc/150?img=3" alt="Preset 3"
+                        class="w-full h-full object-cover pointer-events-none">
                 </button>
-                <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=4">
-                    <img src="https://i.pravatar.cc/150?img=4" alt="Preset 4" class="w-full h-full object-cover pointer-events-none">
+                <button
+                    class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto"
+                    data-src="https://i.pravatar.cc/150?img=4">
+                    <img src="https://i.pravatar.cc/150?img=4" alt="Preset 4"
+                        class="w-full h-full object-cover pointer-events-none">
                 </button>
             </div>
 
             <!-- Upload Option -->
             <div class="w-full mb-stack-lg">
                 <input type="file" id="profile-upload-input" accept="image/*" class="hidden">
-                <button id="btn-upload-profile" class="w-full bg-surface-container border border-outline-variant hover:bg-surface-variant text-on-surface py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
+                <button id="btn-upload-profile"
+                    class="w-full bg-surface-container border border-outline-variant hover:bg-surface-variant text-on-surface py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
                     <span class="material-symbols-outlined">upload</span>
                     Upload from device
                 </button>
             </div>
 
             <!-- Log Out -->
-            <button id="modal-btn-logout" class="w-full text-error hover:bg-error-container/20 py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
+            <button id="modal-btn-logout"
+                class="w-full text-error hover:bg-error-container/20 py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
                 <span class="material-symbols-outlined">logout</span>
                 Log Out
             </button>
@@ -1271,14 +1455,14 @@
             <span class="font-label-sm text-label-sm">Plan</span>
         </a>
         <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
-            data-screen="pulse">
-            <span class="material-symbols-outlined mb-1">favorite</span>
-            <span class="font-label-sm text-label-sm">Pulse</span>
-        </a>
-        <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
             data-screen="log">
             <span class="material-symbols-outlined mb-1">lightbulb</span>
             <span class="font-label-sm text-label-sm">Log</span>
+        </a>
+        <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
+            data-screen="pulse">
+            <span class="material-symbols-outlined mb-1">favorite</span>
+            <span class="font-label-sm text-label-sm">Pulse</span>
         </a>
         <a class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant transition-all rounded-lg p-2 w-14 cursor-pointer"
             data-screen="journey">
@@ -1289,7 +1473,7 @@
 
     <script>
         // ── Router ────────────────────────────────────────────────
-        const SCREENS = ['onboarding', 'direction', 'plan', 'log', 'journey', 'pulse', 'auth'];
+        const SCREENS = ['onboarding', 'direction', 'plan', 'log', 'pulse', 'journey', 'auth'];
         let currentScreen = 'onboarding';
         let screenHistory = [];
 
@@ -1388,7 +1572,7 @@
                 const dayName = days[d.getDay()];
                 const dateNum = d.getDate();
                 const isToday = i === 0;
-                
+
                 if (isToday) {
                     html += `<div class="flex flex-col items-center p-stack-sm rounded-2xl bg-primary-container text-on-primary-container shadow-sm cursor-pointer scale-105 w-16 text-center">
                         <span class="font-label-sm text-label-sm uppercase mb-1">${dayName}</span>
@@ -1420,7 +1604,7 @@
                 if (v === 'done') this.classList.add('bg-primary', 'text-white');
                 else if (v === 'partly') this.classList.add('bg-secondary', 'text-white');
                 else this.classList.add('bg-surface-variant', 'text-on-surface');
-                
+
                 if (window.saveDailyLogStatus) {
                     window.saveDailyLogStatus(v);
                 }
@@ -1432,27 +1616,27 @@
         const addIntentionForm = document.getElementById('add-intention-form');
         const cancelIntentionBtn = document.getElementById('cancel-intention-btn');
         const saveIntentionBtn = document.getElementById('save-intention-btn');
-        
+
         if (addIntentionBtn && addIntentionForm) {
             addIntentionBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 this.classList.add('hidden');
                 addIntentionForm.classList.remove('hidden');
             });
-            
-            cancelIntentionBtn.addEventListener('click', function(e) {
+
+            cancelIntentionBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 addIntentionForm.classList.add('hidden');
                 addIntentionBtn.classList.remove('hidden');
                 document.getElementById('intention-name').value = '';
                 document.getElementById('intention-desc').value = '';
             });
-            
-            saveIntentionBtn.addEventListener('click', function(e) {
+
+            saveIntentionBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 const name = document.getElementById('intention-name').value.trim() || 'New Intention';
                 const desc = document.getElementById('intention-desc').value.trim();
-                
+
                 const customDayDiv = document.createElement('div');
                 customDayDiv.className = 'glass-card rounded-2xl p-4 flex flex-col items-start gap-4 transition-all duration-300 border-2 border-primary shadow-[0_0_20px_rgba(55,95,151,0.15)] relative overflow-hidden';
                 customDayDiv.innerHTML = `
@@ -1472,9 +1656,9 @@
                         </div>
                     </div>
                 `;
-                
+
                 customDayDiv.querySelectorAll('.task-btn').forEach(btn => {
-                    btn.addEventListener('click', function(ev) {
+                    btn.addEventListener('click', function (ev) {
                         ev.preventDefault();
                         const row = this.closest('.flex.gap-4');
                         if (!row) return;
@@ -1489,9 +1673,9 @@
                         else this.classList.add('bg-surface-variant', 'text-on-surface');
                     });
                 });
-                
+
                 addIntentionForm.insertAdjacentElement('beforebegin', customDayDiv);
-                
+
                 addIntentionForm.classList.add('hidden');
                 addIntentionBtn.classList.remove('hidden');
                 document.getElementById('intention-name').value = '';
@@ -1506,19 +1690,19 @@
                 e.preventDefault();
                 this.innerHTML = '<span class="material-symbols-outlined filled-icon text-sm">check_circle</span> Saved!';
                 this.classList.add('opacity-75', 'pointer-events-none');
-                setTimeout(() => goTo('journey'), 1200);
+                setTimeout(() => goTo('pulse'), 1200);
             });
         }
-        
+
         // ── Setup dynamic day compartments ──────────────────────────────
-        const currentDay = new Date().getDay(); 
+        const currentDay = new Date().getDay();
         let todayVal = currentDay === 0 ? 7 : currentDay;
         document.querySelectorAll('.day-compartment').forEach(comp => {
             const day = parseInt(comp.dataset.day);
             const title = comp.querySelector('.day-title');
             const badge = comp.querySelector('.today-badge');
             const btnsContainer = comp.querySelector('.task-buttons-container');
-            
+
             if (day < todayVal) {
                 comp.classList.add('opacity-60', 'grayscale-[50%]', 'hover:grayscale-0', 'hover:opacity-100');
             } else if (day === todayVal) {
@@ -1541,11 +1725,11 @@
                 const selected = document.querySelector('input[name="next_step"]:checked')?.value;
                 this.innerHTML = '<span class="material-symbols-outlined filled-icon text-sm">check_circle</span> Saved!';
                 this.classList.add('opacity-75', 'pointer-events-none');
-                
+
                 if (window.savePulseReflection) {
                     await window.savePulseReflection(selected);
                 }
-                setTimeout(() => goTo('log'), 1200);
+                setTimeout(() => goTo('journey'), 1200);
             });
         }
 
