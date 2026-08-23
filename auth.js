@@ -312,3 +312,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+        // -- Save Weekly Plan Direction (from Direction page) ---------------------
+    window.saveWeeklyPlanDirection = async (direction) => {
+        if (!currentUser) return;
+        const { data, error } = await supabase.from('weekly_plans').insert({
+            user_id: currentUser.id,
+            week_number: 1,
+            direction_chosen: direction,
+            task_description: "Starting exploration for " + direction
+        });
+        if (error) console.error('Error saving weekly plan direction:', error);
+        else console.log('Successfully saved weekly plan direction');
+    };
+
+    // -- Update Weekly Plan Task (from Plan page) ----------------------
+    window.updateWeeklyPlanTask = async (taskDesc) => {
+        if (!currentUser) return;
+        const { data, error } = await supabase.from('weekly_plans')
+            .update({ task_description: taskDesc })
+            .eq('user_id', currentUser.id)
+            .eq('week_number', 1);
+        if (error) console.error('Error updating weekly plan task:', error);
+        else console.log('Successfully updated weekly plan task');
+    };
+

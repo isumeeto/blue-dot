@@ -1,4 +1,4 @@
-﻿<!-- Page Layout Flow Adjustments Comment -->
+<!-- Page Layout Flow Adjustments Comment -->
 <!DOCTYPE html>
 <html class="light" lang="en">
 
@@ -1538,7 +1538,18 @@
                 return;
             }
             const btn = e.target.closest('[data-screen]');
-            if (btn) { e.preventDefault(); window.goTo(btn.dataset.screen); }
+            if (btn) {
+                e.preventDefault(); 
+                // If it's a direction choice button, save direction to weekly_plans
+                if (btn.textContent.trim() === 'Choose this path') {
+                    const article = btn.closest('article');
+                    const directionTitle = article ? article.querySelector('h2').textContent.trim() : 'Unknown Direction';
+                    if (window.saveWeeklyPlanDirection) {
+                        window.saveWeeklyPlanDirection(directionTitle);
+                    }
+                }
+                window.goTo(btn.dataset.screen); 
+            }
         });
 
         // ── Accordion ──────────────────────────────────────────
@@ -1558,6 +1569,13 @@
             const s = document.getElementById('tried-success');
             s.classList.remove('hidden');
             s.classList.add('flex');
+            
+            // Update the weekly plan task when marked as tried
+            const taskDescElement = document.querySelector('#screen-plan h2');
+            const taskDesc = taskDescElement ? taskDescElement.textContent.trim() : '';
+            if (window.updateWeeklyPlanTask && taskDesc) {
+                window.updateWeeklyPlanTask(taskDesc);
+            }
         });
 
         // ── Daily Rhythm Calendar ──────────────────────────────
@@ -1603,7 +1621,7 @@
                 this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
                 if (v === 'done') this.classList.add('bg-primary', 'text-white');
                 else if (v === 'partly') this.classList.add('bg-secondary', 'text-white');
-                else this.classList.add('bg-surface-variant', 'text-on-surface');
+                else if (v === 'skipped') this.classList.add('bg-surface-variant', 'text-on-surface');
 
                 if (window.saveDailyLogStatus) {
                     window.saveDailyLogStatus(v);
@@ -1651,8 +1669,8 @@
                         <div class="flex flex-wrap gap-2 justify-center sm:justify-end w-full sm:w-auto">
                             <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors" data-val="done">Done</button>
                             <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-val="partly">Partly</button>
-                            <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skip">Skipped</button>
-                            <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="gently">Gently</button>
+                            <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skipped">Skipped</button>
+                            <button class="task-btn px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm hover:bg-surface-container-highest transition-colors" data-val="skipped">Gently</button>
                         </div>
                     </div>
                 `;
@@ -1670,7 +1688,7 @@
                         this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
                         if (v === 'done') this.classList.add('bg-primary', 'text-white');
                         else if (v === 'partly') this.classList.add('bg-secondary', 'text-white');
-                        else this.classList.add('bg-surface-variant', 'text-on-surface');
+                        else if (v === 'skipped') this.classList.add('bg-surface-variant', 'text-on-surface');
                     });
                 });
 
