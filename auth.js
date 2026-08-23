@@ -234,6 +234,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // If signup is successful, add to users table
         if (data.user) {
+            // Wait for the session to be fully established in the client so RLS passes
+            await supabase.auth.getSession();
+            
             console.log("Attempting to insert user row into 'users' table:", { id: data.user.id, email: data.user.email });
             const { error: insertError } = await supabase.from('users').insert({
                 id: data.user.id,

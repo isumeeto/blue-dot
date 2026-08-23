@@ -61,8 +61,14 @@ ALTER TABLE public.pulse_checks ENABLE ROW LEVEL SECURITY;
 -- CREATE RLS POLICIES
 
 -- Users can only read and update their own user record
-CREATE POLICY "Users can manage their own user record" 
-ON public.users FOR ALL USING (auth.uid() = id);
+CREATE POLICY "Users can view their own user record" 
+ON public.users FOR SELECT USING (auth.uid() = id);
+
+CREATE POLICY "Users can insert their own user record" 
+ON public.users FOR INSERT WITH CHECK (auth.uid() = id);
+
+CREATE POLICY "Users can update their own user record" 
+ON public.users FOR UPDATE USING (auth.uid() = id);
 
 -- Profiles
 CREATE POLICY "Users can manage their own profiles" 
