@@ -311,6 +311,28 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Successfully saved pulse reflection:", nextStep);
         }
     };
+    // -- Save User Context (from Onboarding page) ---------------------
+    window.saveUserContext = async (situation, feelings) => {
+        if (!currentUser) {
+            console.log("Cannot save user context: User not logged in.");
+            return;
+        }
+        
+        console.log("Saving user context...");
+        
+        const { data, error } = await supabase.from('user_context').insert({
+            user_id: currentUser.id,
+            current_situation: situation,
+            current_feelings: feelings
+        });
+        
+        if (error) {
+            console.error("Error saving user context:", error);
+        } else {
+            console.log("Successfully saved user context");
+        }
+    };
+
     // -- Save Weekly Plan Direction (from Direction page) ---------------------
     window.saveWeeklyPlanDirection = async (direction) => {
         if (!currentUser) {

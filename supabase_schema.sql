@@ -85,3 +85,19 @@ ON public.daily_logs FOR ALL USING (auth.uid() = user_id);
 -- Pulse Checks
 CREATE POLICY "Users can manage their own pulse checks" 
 ON public.pulse_checks FOR ALL USING (auth.uid() = user_id);
+
+-- 6. Create user_context table
+CREATE TABLE public.user_context (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES public.users(id) ON DELETE CASCADE NOT NULL,
+  current_situation TEXT,
+  current_feelings TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- ENABLE ROW LEVEL SECURITY (RLS) FOR user_context
+ALTER TABLE public.user_context ENABLE ROW LEVEL SECURITY;
+
+-- CREATE RLS POLICY FOR user_context
+CREATE POLICY "Users can manage their own user context" 
+ON public.user_context FOR ALL USING (auth.uid() = user_id);

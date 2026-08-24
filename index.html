@@ -336,12 +336,18 @@
                     <div class="flex flex-col gap-stack-sm w-full">
                         <h2 class="font-display text-headline-md text-on-surface text-center mb-base tracking-tight">
                             Tell us about your current situation.</h2>
-                        <textarea
+                        <textarea id="current-situation"
                             class="w-full bg-surface-container-lowest border border-outline-variant rounded-2xl p-stack-md font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant/50 focus:ring-0 focus:border-primary focus:outline-none transition-colors resize-none shadow-[0_8px_30px_rgb(55,95,151,0.04)]"
-                            placeholder="I am currently feeling..." rows="4"></textarea>
+                            placeholder="I am currently experiencing..." rows="3"></textarea>
+                        
+                        <h2 class="font-display text-headline-md text-on-surface text-center mt-base mb-base tracking-tight">
+                            How are you feeling about it?</h2>
+                        <textarea id="current-feelings"
+                            class="w-full bg-surface-container-lowest border border-outline-variant rounded-2xl p-stack-md font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant/50 focus:ring-0 focus:border-primary focus:outline-none transition-colors resize-none shadow-[0_8px_30px_rgb(55,95,151,0.04)]"
+                            placeholder="I am currently feeling..." rows="3"></textarea>
                     </div>
                     <div class="flex justify-end items-center mt-stack-sm w-full">
-                        <button
+                        <button id="btn-save-context"
                             class="nav-link bg-primary text-white font-label-md text-label-md rounded-full px-8 py-3 shadow-[0_4px_20px_rgb(55,95,151,0.2)] hover:bg-on-primary-fixed-variant hover:text-white active:scale-95 transition-all flex items-center gap-2 group"
                             data-screen="direction">
                             Continue <span
@@ -779,8 +785,8 @@
                 <div class="mt-stack-lg">
                     <button
                         class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary flex items-center gap-2 transition-colors"
-                        data-screen="pulse">
-                        Take pulse check <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        data-screen="log">
+                        Go to daily log <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                     </button>
                 </div>
             </div>
@@ -1539,7 +1545,17 @@
             }
             const btn = e.target.closest('[data-screen]');
             if (btn) {
-                e.preventDefault(); 
+                e.preventDefault();
+                
+                // If it's the continue button on the onboarding screen, save context
+                if (btn.id === 'btn-save-context') {
+                    const situationVal = document.getElementById('current-situation')?.value || '';
+                    const feelingsVal = document.getElementById('current-feelings')?.value || '';
+                    if (window.saveUserContext && (situationVal || feelingsVal)) {
+                        window.saveUserContext(situationVal, feelingsVal);
+                    }
+                }
+
                 // If it's a direction choice button, save direction to weekly_plans
                 if (btn.textContent.trim() === 'Choose this path') {
                     const article = btn.closest('article');
@@ -1548,7 +1564,7 @@
                         window.saveWeeklyPlanDirection(directionTitle);
                     }
                 }
-                window.goTo(btn.dataset.screen); 
+                window.goTo(btn.dataset.screen);
             }
         });
 
@@ -1569,7 +1585,7 @@
             const s = document.getElementById('tried-success');
             s.classList.remove('hidden');
             s.classList.add('flex');
-            
+
             // Update the weekly plan task when marked as tried
             const taskDescElement = document.querySelector('#screen-plan h2');
             const taskDesc = taskDescElement ? taskDescElement.textContent.trim() : '';
