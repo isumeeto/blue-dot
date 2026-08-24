@@ -338,13 +338,7 @@
                             Tell us about your current situation.</h2>
                         <textarea id="current-situation"
                             class="w-full bg-surface-container-lowest border border-outline-variant rounded-2xl p-stack-md font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant/50 focus:ring-0 focus:border-primary focus:outline-none transition-colors resize-none shadow-[0_8px_30px_rgb(55,95,151,0.04)]"
-                            placeholder="I am currently experiencing..." rows="3"></textarea>
-                        
-                        <h2 class="font-display text-headline-md text-on-surface text-center mt-base mb-base tracking-tight">
-                            How are you feeling about it?</h2>
-                        <textarea id="current-feelings"
-                            class="w-full bg-surface-container-lowest border border-outline-variant rounded-2xl p-stack-md font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant/50 focus:ring-0 focus:border-primary focus:outline-none transition-colors resize-none shadow-[0_8px_30px_rgb(55,95,151,0.04)]"
-                            placeholder="I am currently feeling..." rows="3"></textarea>
+                            placeholder="I am currently feeling..." rows="4"></textarea>
                     </div>
                     <div class="flex justify-end items-center mt-stack-sm w-full">
                         <button id="btn-save-context"
@@ -1550,9 +1544,8 @@
                 // If it's the continue button on the onboarding screen, save context
                 if (btn.id === 'btn-save-context') {
                     const situationVal = document.getElementById('current-situation')?.value || '';
-                    const feelingsVal = document.getElementById('current-feelings')?.value || '';
-                    if (window.saveUserContext && (situationVal || feelingsVal)) {
-                        window.saveUserContext(situationVal, feelingsVal);
+                    if (window.saveUserContext && situationVal) {
+                        window.saveUserContext(situationVal, situationVal);
                     }
                 }
 
