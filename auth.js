@@ -29,10 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
     async function checkUser() {
         const { data: { session } } = await supabase.auth.getSession();
         updateProfileIcon(session?.user || null);
+        if (session?.user) {
+            await loadUserProfile(session.user);
+            if (window.currentScreen === 'direction' && window.checkDirectionState) {
+                window.checkDirectionState();
+            }
+        }
         
         // Listen for auth changes
-        supabase.auth.onAuthStateChange((event, session) => {
+        supabase.auth.onAuthStateChange(async (event, session) => {
             updateProfileIcon(session?.user || null);
+            if (session?.user) {
+                await loadUserProfile(session.user);
+            }
             
             if (event === 'SIGNED_IN') {
                  if (window.currentScreen === 'auth' || window.currentScreen === 'onboarding') {
@@ -83,58 +92,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ── Profile Modal Logic ────────────────────────────────────
-    const modalProfile = document.getElementById('modal-profile');
-    const modalProfileClose = document.getElementById('modal-profile-close');
-    const modalProfileBackdrop = document.getElementById('modal-profile-backdrop');
-    const modalBtnLogout = document.getElementById('modal-btn-logout');
-    const modalCurrentAvatarIcon = document.getElementById('modal-current-avatar-icon');
-    const modalCurrentAvatarImg = document.getElementById('modal-current-avatar-img');
+    // ── Profile Screen Logic ────────────────────────────────────
+    const profileBtnLogout = document.getElementById('profile-btn-logout');
+    const profileCurrentAvatarIcon = document.getElementById('profile-current-avatar-icon');
+    const profileCurrentAvatarImg = document.getElementById('profile-current-avatar-img');
     const presetAvatarBtns = document.querySelectorAll('.preset-avatar-btn');
     const btnUploadProfile = document.getElementById('btn-upload-profile');
     const profileUploadInput = document.getElementById('profile-upload-input');
+    const profileNameInput = document.getElementById('profile-name-input');
+    const profileEmailInput = document.getElementById('profile-email-input');
+    const btnSaveProfile = document.getElementById('btn-save-profile');
 
-    function openProfileModal() {
-        if (!currentUser) return;
-        modalProfile.classList.remove('hidden');
-        modalProfile.classList.add('flex');
-    }
-
-    function closeProfileModal() {
-        modalProfile.classList.add('hidden');
-        modalProfile.classList.remove('flex');
+    async function loadUserProfile(user) {
+        if (!user) return;
+        if (profileEmailInput) profileEmailInput.value = user.email;
+        
+        // Fetch user from users table to get the name
+        const { data, error } = await supabase.from('users').select('name').eq('id', user.id).single();
+        if (!error && data) {
+            if (profileNameInput) profileNameInput.value = data.name || '';
+        }
     }
 
     function setAvatar(url) {
         currentAvatarUrl = url;
-        modalCurrentAvatarIcon.classList.add('hidden');
-        modalCurrentAvatarImg.src = url;
-        modalCurrentAvatarImg.classList.remove('hidden');
+        if (profileCurrentAvatarIcon) profileCurrentAvatarIcon.classList.add('hidden');
+        if (profileCurrentAvatarImg) {
+            profileCurrentAvatarImg.src = url;
+            profileCurrentAvatarImg.classList.remove('hidden');
+        }
         updateProfileIcon(currentUser);
     }
 
-    btnProfile.addEventListener('click', (e) => {
-        if (currentUser) {
-            e.preventDefault();
-            e.stopPropagation();
-            openProfileModal();
-        }
-    });
+    if (btnSaveProfile) {
+        btnSaveProfile.addEventListener('click', async () => {
+            if (!currentUser) return;
+            const newName = profileNameInput.value;
+            const btnOriginalText = btnSaveProfile.textContent;
+            btnSaveProfile.textContent = 'Saving...';
+            btnSaveProfile.disabled = true;
+            
+            await supabase.from('users').update({ name: newName }).eq('id', currentUser.id);
+            
+            btnSaveProfile.textContent = 'Saved!';
+            setTimeout(() => {
+                btnSaveProfile.textContent = btnOriginalText;
+                btnSaveProfile.disabled = false;
+            }, 2000);
+        });
+    }
 
-    if (modalProfileClose) modalProfileClose.addEventListener('click', closeProfileModal);
-    if (modalProfileBackdrop) modalProfileBackdrop.addEventListener('click', closeProfileModal);
-
-    if (modalBtnLogout) {
-        modalBtnLogout.addEventListener('click', async () => {
+    if (profileBtnLogout) {
+        profileBtnLogout.addEventListener('click', async () => {
             await supabase.auth.signOut();
-            closeProfileModal();
-            // Reset avatar on logout
             currentAvatarUrl = null; 
             updateProfileIcon(null);
-            const authScreen = document.getElementById('screen-auth');
-            if (authScreen && authScreen.classList.contains('active')) {
-                if (window.goTo) window.goTo('onboarding');
-            }
+            if (profileNameInput) profileNameInput.value = '';
+            if (profileEmailInput) profileEmailInput.value = '';
+            
+            if (window.goTo) window.goTo('onboarding');
         });
     }
 
@@ -300,9 +316,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         console.log("Saving pulse reflection:", nextStep);
         
+        const enjoymentVal = document.getElementById('enjoyment-slider')?.value || null;
+        const difficultyVal = document.getElementById('difficulty-slider')?.value || null;
+        const completionVal = document.querySelector('input[name="progress"]:checked')?.value || null;
+        const surpriseVal = document.getElementById('surprise-notes')?.value || null;
+
         const { data, error } = await supabase.from('pulse_checks').insert({
             user_id: currentUser.id,
-            next_step_choice: nextStep
+            next_step_choice: nextStep,
+            enjoyment: enjoymentVal,
+            difficulty: difficultyVal,
+            completion_amount: completionVal,
+            surprise_notes: surpriseVal
         });
         
         if (error) {
@@ -361,6 +386,76 @@ document.addEventListener('DOMContentLoaded', () => {
             .eq('week_number', 1);
         if (error) console.error('Error updating weekly plan task:', error);
         else console.log('Successfully updated weekly plan task');
+    };
+    
+    // -- Check Direction State (from Direction page) -------------------
+    window.checkDirectionState = async () => {
+        if (!currentUser) return;
+        
+        try {
+            // 1. Get latest weekly plan
+            const { data: plans, error: planError } = await supabase
+                .from('weekly_plans')
+                .select('*')
+                .eq('user_id', currentUser.id)
+                .order('created_at', { ascending: false })
+                .limit(1);
+                
+            if (planError) throw planError;
+            
+            const latestPlan = plans && plans.length > 0 ? plans[0] : null;
+            
+            // 2. Get latest pulse check
+            const { data: pulses, error: pulseError } = await supabase
+                .from('pulse_checks')
+                .select('*')
+                .eq('user_id', currentUser.id)
+                .order('created_at', { ascending: false })
+                .limit(1);
+                
+            if (pulseError) throw pulseError;
+            
+            const latestPulse = pulses && pulses.length > 0 ? pulses[0] : null;
+            
+            let isLocked = false;
+            let chosenDirection = '';
+            
+            if (latestPlan) {
+                isLocked = true;
+                chosenDirection = latestPlan.direction_chosen;
+                
+                // If there's a newer pulse check with 'switch', it's unlocked
+                if (latestPulse) {
+                    const planDate = new Date(latestPlan.created_at);
+                    const pulseDate = new Date(latestPulse.created_at);
+                    
+                    if (pulseDate > planDate && latestPulse.next_step_choice === 'switch') {
+                        isLocked = false;
+                    }
+                }
+            }
+            
+            // Update UI
+            const optionsView = document.getElementById('direction-options-view');
+            const lockedView = document.getElementById('direction-locked-view');
+            const lockedName = document.getElementById('locked-direction-name');
+            
+            if (optionsView && lockedView && lockedName) {
+                if (isLocked) {
+                    optionsView.classList.add('hidden');
+                    lockedView.classList.remove('hidden');
+                    lockedView.classList.add('flex');
+                    lockedName.textContent = chosenDirection;
+                } else {
+                    optionsView.classList.remove('hidden');
+                    lockedView.classList.add('hidden');
+                    lockedView.classList.remove('flex');
+                }
+            }
+            
+        } catch (err) {
+            console.error('Error checking direction state:', err);
+        }
     };
 });
 

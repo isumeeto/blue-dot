@@ -298,7 +298,7 @@
         </nav>
         <button id="btn-profile"
             class="text-primary hover:text-white transition-colors p-2 rounded-full hover:bg-primary flex items-center gap-1"
-            data-screen="auth">
+            data-screen="profile">
             <span class="material-symbols-outlined" id="icon-profile">account_circle</span>
             <span id="text-profile" class="font-label-md hidden md:block"></span>
         </button>
@@ -445,7 +445,7 @@
                     <p class="font-body-lg text-body-lg text-on-surface-variant">Review these potential paths based on
                         your recent reflections. Choose the one that resonates most.</p>
                 </section>
-                <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <section id="direction-options-view" class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
                     <!-- Card 1: Creative Strategist -->
                     <article
                         class="bg-surface-container-lowest rounded-2xl p-stack-md flex flex-col gap-stack-sm soft-elevation-1 border border-primary/10 hover:soft-elevation-2 transition-shadow duration-300 relative overflow-hidden group">
@@ -717,78 +717,160 @@
                         </div>
                     </article>
                 </section>
+                <section id="direction-locked-view" class="hidden flex-col items-center justify-center text-center max-w-2xl mx-auto py-12 px-6 gap-6 bg-surface-container-lowest rounded-2xl border border-primary/10 soft-elevation-1">
+                    <span class="material-symbols-outlined text-primary text-6xl">check_circle</span>
+                    <div class="flex flex-col gap-2 mt-4">
+                        <h2 class="font-headline-md text-headline-md text-on-surface">You chose <span id="locked-direction-name" class="text-primary font-bold"></span></h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant mt-2">You are currently focusing on this path. Head over to the Plan page to update your tasks, or continue your journey.</p>
+                    </div>
+                    <button class="nav-link w-full max-w-[240px] bg-primary text-white py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all shadow-md mt-6" data-screen="plan">Continue to Plan</button>
+                </section>
             </div>
         </div>
         <!-- SCREEN 3: WEEKLY PLAN -->
         <div class="screen" id="screen-plan">
-            <div
-                class="flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto pt-8 pb-12 min-h-[75vh]">
+            <div class="flex flex-col items-center justify-start px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto pt-8 pb-12 min-h-[75vh]">
                 <div class="text-center mb-stack-lg w-full max-w-2xl">
-                    <h1
-                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-stack-sm">
-                        This Week&#39;s Focus</h1>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant">Take a small step to build momentum in
-                        your journey.</p>
+                    <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-stack-sm">
+                        Your Plan
+                    </h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">Step-by-step guidance based on your chosen direction.</p>
                 </div>
-                <article
-                    class="glass-card rounded-[32px] p-stack-lg w-full max-w-2xl flex flex-col items-center text-center relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-primary-fixed/20 to-transparent opacity-50 pointer-events-none rounded-[32px]">
-                    </div>
-                    <div class="relative z-10 w-full flex flex-col items-center">
-                        <div
-                            class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-stack-md">
-                            <span class="material-symbols-outlined filled-icon text-on-primary-fixed"
-                                style="font-size:30px;">local_cafe</span>
-                        </div>
-                        <div class="mb-stack-lg space-y-stack-sm">
-                            <span
-                                class="inline-block px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider mb-2">Small
-                                Real World Task</span>
-                            <h2 class="font-headline-md text-headline-md text-on-surface">Schedule a 15-minute coffee
-                                chat with a local designer.</h2>
-                            <p
-                                class="font-body-md text-body-md text-on-surface-variant flex items-center justify-center gap-2">
-                                <span class="material-symbols-outlined text-[18px]">schedule</span>Est. 30 mins
-                            </p>
-                        </div>
-                        <div
-                            class="w-full flex items-center bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-3 shadow-sm mb-stack-md hover:bg-surface-container-low transition-colors focus-within:bg-surface-container-low focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
-                            <div
-                                class="w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-3 shrink-0 shadow-sm">
-                                <span class="material-symbols-outlined text-on-primary text-[18px]">trip_origin</span>
+
+                <div class="w-full max-w-3xl space-y-stack-lg">
+                    <!-- DAY 1 -->
+                    <article class="glass-card rounded-[32px] p-stack-lg w-full relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary-fixed/10 to-transparent opacity-50 pointer-events-none rounded-[32px]"></div>
+                        <div class="relative z-10 w-full flex flex-col">
+                            <h2 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Day 1: Quick Start</h2>
+                            <div class="space-y-4 mb-stack-md">
+                                <p class="font-body-md text-body-md text-on-surface-variant">Answer a couple of short questions to unlock your first resource.</p>
+                                
+                                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm">
+                                    <label class="block font-label-md text-label-md text-on-surface mb-2">1. What is your primary goal right now?</label>
+                                    <input type="text" placeholder="Type here..." class="bg-transparent border-b border-outline-variant outline-none text-on-surface font-body-md w-full pb-1 focus:border-primary transition-colors" />
+                                </div>
+                                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm">
+                                    <label class="block font-label-md text-label-md text-on-surface mb-2">2. What feels like the biggest obstacle?</label>
+                                    <input type="text" placeholder="Type here..." class="bg-transparent border-b border-outline-variant outline-none text-on-surface font-body-md w-full pb-1 focus:border-primary transition-colors" />
+                                </div>
+                                
+                                <button class="bg-primary text-on-primary hover:bg-primary/90 rounded-full px-6 py-3 font-label-md text-label-md transition-all shadow-md mt-2 w-fit">Submit Answers</button>
                             </div>
-                            <input type="text" placeholder="Type here or tap to talk..."
-                                class="bg-transparent border-none outline-none text-on-surface font-body-md flex-1 text-left placeholder:text-on-surface-variant placeholder:opacity-70 w-full" />
-                            <button
-                                class="shrink-0 text-primary hover:text-primary/80 transition-colors flex items-center justify-center cursor-pointer ml-2">
-                                <span class="material-symbols-outlined filled-icon text-[24px]">mic</span>
-                            </button>
+                            
+                            <!-- Value Delivery -->
+                            <div class="mt-4 p-4 bg-secondary-container rounded-2xl border border-secondary/20">
+                                <h3 class="font-label-lg text-label-lg text-on-secondary-container mb-2 flex items-center gap-2"><span class="material-symbols-outlined">play_circle</span> Curated Resource Unlocked</h3>
+                                <p class="font-body-sm text-body-sm text-on-secondary-container mb-3">Here is a quick video on breaking down your goals based on your direction.</p>
+                                <a href="#" class="inline-flex items-center gap-2 text-primary font-label-md hover:underline"><span class="material-symbols-outlined text-[18px]">link</span> Watch on YouTube</a>
+                            </div>
                         </div>
-                        <button id="mark-tried-btn"
-                            class="bg-primary text-on-primary hover:bg-primary/90 rounded-full px-8 py-4 font-label-md text-label-md flex items-center gap-2 transition-all active:scale-95 shadow-md shadow-primary/20">
-                            <span class="material-symbols-outlined">check_circle</span>Mark as tried
-                        </button>
-                        <div id="tried-success"
-                            class="hidden mt-4 text-primary font-label-md text-label-md items-center gap-2">
-                            <span class="material-symbols-outlined filled-icon text-[20px]">check_circle</span>Logged!
-                            Great work.
+                    </article>
+
+                    <!-- DAY 2 -->
+                    <article class="glass-card rounded-[32px] p-stack-lg w-full relative overflow-hidden opacity-90">
+                        <div class="relative z-10 w-full flex flex-col">
+                            <div class="flex justify-between items-start mb-stack-sm">
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Day 2: Deep Dive</h2>
+                                <span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-[10px] uppercase tracking-wider">Locked</span>
+                            </div>
+                            <div class="space-y-4 mb-stack-md">
+                                <p class="font-body-md text-body-md text-on-surface-variant">Let's go deeper. (Placeholder for 5-8 questions)</p>
+                                
+                                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm opacity-60">
+                                    <label class="block font-label-md text-label-md text-on-surface mb-2">Did yesterday's video resonate?</label>
+                                    <input type="text" disabled placeholder="Locked..." class="bg-transparent border-b border-outline-variant outline-none text-on-surface font-body-md w-full pb-1" />
+                                </div>
+                                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm opacity-60">
+                                    <label class="block font-label-md text-label-md text-on-surface mb-2">Question 2...</label>
+                                    <input type="text" disabled placeholder="Locked..." class="bg-transparent border-b border-outline-variant outline-none text-on-surface font-body-md w-full pb-1" />
+                                </div>
+                                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm opacity-60">
+                                    <label class="block font-label-md text-label-md text-on-surface mb-2">Question 3...</label>
+                                    <input type="text" disabled placeholder="Locked..." class="bg-transparent border-b border-outline-variant outline-none text-on-surface font-body-md w-full pb-1" />
+                                </div>
+                                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm opacity-60">
+                                    <label class="block font-label-md text-label-md text-on-surface mb-2">Question 4...</label>
+                                    <input type="text" disabled placeholder="Locked..." class="bg-transparent border-b border-outline-variant outline-none text-on-surface font-body-md w-full pb-1" />
+                                </div>
+                                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm opacity-60">
+                                    <label class="block font-label-md text-label-md text-on-surface mb-2">Question 5...</label>
+                                    <input type="text" disabled placeholder="Locked..." class="bg-transparent border-b border-outline-variant outline-none text-on-surface font-body-md w-full pb-1" />
+                                </div>
+                            </div>
+
+                            <!-- Value Delivery 2 -->
+                            <div class="mt-4 p-4 bg-tertiary-container rounded-2xl border border-tertiary/20 opacity-60">
+                                <h3 class="font-label-lg text-label-lg text-on-tertiary-container mb-2 flex items-center gap-2"><span class="material-symbols-outlined">picture_as_pdf</span> Your Personal Roadmap</h3>
+                                <p class="font-body-sm text-body-sm text-on-tertiary-container">Unlocks after Day 2 questions.</p>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <p class="font-body-sm text-body-sm text-on-surface-variant text-center sm:text-left">Not feeling this direction? Today is the last day you can switch before the week locks.</p>
+                                <button class="nav-link shrink-0 px-4 py-2 rounded-full border border-error text-error hover:bg-error-container hover:text-on-error-container transition-colors font-label-md text-label-md" data-screen="direction">
+                                    Switch Direction Path
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </article>
-                <div class="mt-stack-lg">
-                    <button
-                        class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary flex items-center gap-2 transition-colors"
-                        data-screen="log">
-                        Go to daily log <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                    </button>
+                    </article>
+
+                    <!-- DAY 3 -->
+                    <article class="glass-card rounded-[32px] p-stack-lg w-full relative overflow-hidden opacity-70">
+                        <div class="relative z-10 w-full flex flex-col">
+                            <div class="flex justify-between items-start mb-stack-sm">
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Day 3: Market Analysis</h2>
+                                <span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-[10px] uppercase tracking-wider">Locked</span>
+                            </div>
+                            <div class="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30 mb-4">
+                                <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">insights</span> Market analysis will appear here.</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <input type="text" disabled placeholder="Quick check-in: How are you feeling today?" class="bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-2 outline-none text-on-surface font-body-md w-full opacity-60" />
+                                <button disabled class="shrink-0 w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant opacity-60"><span class="material-symbols-outlined text-[20px]">send</span></button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- DAY 4 -->
+                    <article class="glass-card rounded-[32px] p-stack-lg w-full relative overflow-hidden opacity-70">
+                        <div class="relative z-10 w-full flex flex-col">
+                            <div class="flex justify-between items-start mb-stack-sm">
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Day 4: Job Opportunities</h2>
+                                <span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-[10px] uppercase tracking-wider">Locked</span>
+                            </div>
+                            <div class="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30 mb-4">
+                                <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">work</span> Job opportunities and applications will appear here.</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <input type="text" disabled placeholder="Quick check-in: Any thoughts on these roles?" class="bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-2 outline-none text-on-surface font-body-md w-full opacity-60" />
+                                <button disabled class="shrink-0 w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant opacity-60"><span class="material-symbols-outlined text-[20px]">send</span></button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- DAY 5 -->
+                    <article class="glass-card rounded-[32px] p-stack-lg w-full relative overflow-hidden opacity-70">
+                        <div class="relative z-10 w-full flex flex-col">
+                            <div class="flex justify-between items-start mb-stack-sm">
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Day 5: Industry Trends</h2>
+                                <span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-[10px] uppercase tracking-wider">Locked</span>
+                            </div>
+                            <div class="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30 mb-4">
+                                <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">trending_up</span> Continuing resource drip will appear here.</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <input type="text" disabled placeholder="Quick check-in: Ready for the weekend?" class="bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-2 outline-none text-on-surface font-body-md w-full opacity-60" />
+                                <button disabled class="shrink-0 w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant opacity-60"><span class="material-symbols-outlined text-[20px]">send</span></button>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
         <!-- SCREEN 4: DAILY LOG -->
         <div class="screen" id="screen-log">
             <main class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-20 relative">
-                <form id="pulse-form" class="space-y-stack-md max-w-3xl mx-auto relative z-10">
+                <form id="log-form" class="space-y-stack-md max-w-3xl mx-auto relative z-10">
                     <div class="absolute top-4 right-4 md:right-8 w-20 h-20 opacity-30 pointer-events-none z-0">
                         <div class="w-full h-full rounded-full bg-primary-fixed flex items-center justify-center">
                             <span class="material-symbols-outlined filled-icon text-primary"
@@ -1302,7 +1384,7 @@
                                 <h2 class="font-headline-md text-headline-md text-on-surface">What surprised you?</h2>
                                 <p class="font-body-md text-body-md text-on-surface-variant mt-1 mb-4">A moment of
                                     unexpected joy, a hidden roadblock, or a new insight.</p>
-                                <textarea
+                                <textarea id="surprise-notes"
                                     class="w-full bg-surface border border-outline-variant rounded-xl p-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow resize-none"
                                     placeholder="I noticed that..." rows="4"></textarea>
                             </div>
@@ -1364,81 +1446,74 @@
         </div>
     </main>
 
-    <!-- PROFILE MODAL -->
-    <div id="modal-profile" class="fixed inset-0 z-[100] hidden items-center justify-center">
-        <!-- Backdrop -->
-        <div id="modal-profile-backdrop" class="absolute inset-0 bg-scrim/50 backdrop-blur-sm"></div>
+    <!-- SCREEN: PROFILE -->
+    <div class="screen" id="screen-profile">
+        <main class="w-full max-w-[600px] mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-20 relative">
+            <h1 class="font-display text-display-sm text-on-surface mb-stack-md text-center">Your Profile</h1>
+            
+            <div class="glass-card p-stack-lg rounded-[32px] flex flex-col items-center shadow-elevation-2">
+                <!-- Current Avatar Large -->
+                <div class="relative mb-stack-md group">
+                    <div id="profile-current-avatar-container"
+                        class="w-32 h-32 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center border-4 border-surface shadow-md relative">
+                        <span id="profile-current-avatar-icon" class="material-symbols-outlined text-on-surface-variant"
+                            style="font-size: 64px;">account_circle</span>
+                        <img id="profile-current-avatar-img" src="" alt="Current Profile"
+                            class="w-full h-full object-cover hidden">
+                    </div>
+                </div>
 
-        <!-- Modal Content -->
-        <div
-            class="bg-surface-container-low rounded-[32px] p-stack-lg w-full max-w-sm mx-4 relative z-10 shadow-elevation-3 flex flex-col items-center">
-            <button id="modal-profile-close"
-                class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface transition-colors">
-                <span class="material-symbols-outlined">close</span>
-            </button>
+                <!-- Preset Avatars -->
+                <h3 class="font-label-md text-label-md text-on-surface-variant mb-stack-sm w-full text-left uppercase tracking-wider">
+                    Choose preset</h3>
+                <div class="grid grid-cols-4 gap-4 mb-stack-md w-full">
+                    <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=1">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Preset 1" class="w-full h-full object-cover pointer-events-none">
+                    </button>
+                    <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=2">
+                        <img src="https://i.pravatar.cc/150?img=2" alt="Preset 2" class="w-full h-full object-cover pointer-events-none">
+                    </button>
+                    <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=3">
+                        <img src="https://i.pravatar.cc/150?img=3" alt="Preset 3" class="w-full h-full object-cover pointer-events-none">
+                    </button>
+                    <button class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto" data-src="https://i.pravatar.cc/150?img=4">
+                        <img src="https://i.pravatar.cc/150?img=4" alt="Preset 4" class="w-full h-full object-cover pointer-events-none">
+                    </button>
+                </div>
 
-            <h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Profile Picture</h2>
+                <!-- Upload Option -->
+                <div class="w-full mb-stack-lg">
+                    <input type="file" id="profile-upload-input" accept="image/*" class="hidden">
+                    <button id="btn-upload-profile" class="w-full bg-surface-container border border-outline-variant hover:bg-surface-variant text-on-surface py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">upload</span> Upload from device
+                    </button>
+                </div>
+                
+                <hr class="w-full border-outline-variant mb-stack-lg">
 
-            <!-- Current Avatar Large -->
-            <div class="relative mb-stack-md group">
-                <div id="modal-current-avatar-container"
-                    class="w-32 h-32 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center border-4 border-surface shadow-md relative">
-                    <span id="modal-current-avatar-icon" class="material-symbols-outlined text-on-surface-variant"
-                        style="font-size: 64px;">account_circle</span>
-                    <img id="modal-current-avatar-img" src="" alt="Current Profile"
-                        class="w-full h-full object-cover hidden">
+                <div class="w-full mb-stack-md">
+                    <label for="profile-name-input" class="block font-label-md text-label-md text-on-surface-variant mb-2">Name</label>
+                    <input type="text" id="profile-name-input" placeholder="Your Name" class="w-full bg-surface border border-outline-variant rounded-xl p-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow">
+                </div>
+                
+                <div class="w-full mb-stack-lg">
+                    <label for="profile-email-input" class="block font-label-md text-label-md text-on-surface-variant mb-2">Email</label>
+                    <input type="text" id="profile-email-input" readonly class="w-full bg-surface-container border border-outline-variant rounded-xl p-4 font-body-md text-body-md text-on-surface-variant cursor-not-allowed">
+                </div>
+                
+                <div class="w-full mb-stack-md flex gap-4">
+                    <button id="btn-save-profile" class="flex-1 bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md transition-colors hover:bg-primary/90">
+                        Save Changes
+                    </button>
+                </div>
+                
+                <div class="w-full">
+                    <button id="profile-btn-logout" class="w-full text-error hover:bg-error-container/20 py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2 border border-transparent hover:border-error/30">
+                        <span class="material-symbols-outlined">logout</span> Log Out
+                    </button>
                 </div>
             </div>
-
-            <!-- Preset Avatars -->
-            <h3
-                class="font-label-md text-label-md text-on-surface-variant mb-stack-sm w-full text-left uppercase tracking-wider">
-                Choose preset</h3>
-            <div class="grid grid-cols-4 gap-4 mb-stack-lg w-full">
-                <!-- Using Unsplash Source or Pravatar for presets -->
-                <button
-                    class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto"
-                    data-src="https://i.pravatar.cc/150?img=1">
-                    <img src="https://i.pravatar.cc/150?img=1" alt="Preset 1"
-                        class="w-full h-full object-cover pointer-events-none">
-                </button>
-                <button
-                    class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto"
-                    data-src="https://i.pravatar.cc/150?img=2">
-                    <img src="https://i.pravatar.cc/150?img=2" alt="Preset 2"
-                        class="w-full h-full object-cover pointer-events-none">
-                </button>
-                <button
-                    class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto"
-                    data-src="https://i.pravatar.cc/150?img=3">
-                    <img src="https://i.pravatar.cc/150?img=3" alt="Preset 3"
-                        class="w-full h-full object-cover pointer-events-none">
-                </button>
-                <button
-                    class="preset-avatar-btn rounded-full overflow-hidden w-16 h-16 border-2 border-transparent hover:border-primary focus:border-primary transition-colors hover:scale-105 active:scale-95 mx-auto"
-                    data-src="https://i.pravatar.cc/150?img=4">
-                    <img src="https://i.pravatar.cc/150?img=4" alt="Preset 4"
-                        class="w-full h-full object-cover pointer-events-none">
-                </button>
-            </div>
-
-            <!-- Upload Option -->
-            <div class="w-full mb-stack-lg">
-                <input type="file" id="profile-upload-input" accept="image/*" class="hidden">
-                <button id="btn-upload-profile"
-                    class="w-full bg-surface-container border border-outline-variant hover:bg-surface-variant text-on-surface py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined">upload</span>
-                    Upload from device
-                </button>
-            </div>
-
-            <!-- Log Out -->
-            <button id="modal-btn-logout"
-                class="w-full text-error hover:bg-error-container/20 py-3 rounded-full font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined">logout</span>
-                Log Out
-            </button>
-        </div>
+        </main>
     </div>
 
     <!-- BOTTOM NAV (mobile) -->
@@ -1473,7 +1548,7 @@
 
     <script>
         // ── Router ────────────────────────────────────────────────
-        const SCREENS = ['onboarding', 'direction', 'plan', 'log', 'pulse', 'journey', 'auth'];
+        const SCREENS = ['onboarding', 'direction', 'plan', 'log', 'pulse', 'journey', 'auth', 'profile'];
         let currentScreen = 'onboarding';
         let screenHistory = [];
 
@@ -1488,6 +1563,10 @@
             window.scrollTo(0, 0);
             currentScreen = key;
             window.currentScreen = currentScreen;
+            
+            if (key === 'direction' && window.checkDirectionState) {
+                window.checkDirectionState();
+            }
 
             const btnBack = document.getElementById('btn-back');
             if (btnBack) {
@@ -1555,7 +1634,19 @@
                     const directionTitle = article ? article.querySelector('h2').textContent.trim() : 'Unknown Direction';
                     if (window.saveWeeklyPlanDirection) {
                         window.saveWeeklyPlanDirection(directionTitle);
+                        
+                        // Update UI to locked state immediately
+                        const optionsView = document.getElementById('direction-options-view');
+                        const lockedView = document.getElementById('direction-locked-view');
+                        const lockedName = document.getElementById('locked-direction-name');
+                        if (optionsView && lockedView && lockedName) {
+                            optionsView.classList.add('hidden');
+                            lockedView.classList.remove('hidden');
+                            lockedView.classList.add('flex');
+                            lockedName.textContent = directionTitle;
+                        }
                     }
+                    return; // Prevent automatic goTo(btn.dataset.screen)
                 }
                 window.goTo(btn.dataset.screen);
             }
